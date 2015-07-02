@@ -14,7 +14,23 @@ import java.sql.ResultSet;
 public class AdminBean {
 
     data db = new data();
-    private String email, sifre;
+    private String email, sifre, adminId, gitURL;
+
+    public String getGitURL() {
+        return gitURL;
+    }
+
+    public void setGitURL(String gitURL) {
+        this.gitURL = gitURL;
+    }
+
+    public String getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
 
     public String getEmail() {
         return email;
@@ -32,19 +48,17 @@ public class AdminBean {
         this.sifre = sifre;
     }
 
-    public String login(String email, String sifre) {
+    public void login() {
         String url = "";
         try {
-            ResultSet rs = db.baglan().executeQuery("SELECT *FROM kullanicilar WHERE mail='" + email + "' AND sifre='" + sifre + "' AND seviye = 0");
-            ResultSet rs2 = db.baglan().executeQuery("SELECT *FROM kullanicilar WHERE mail='" + email + "' AND sifre='" + sifre + "' AND seviye = 1");
-            if (rs.next()) {
+            ResultSet rs = db.baglan().executeQuery("SELECT *FROM kullanicilar WHERE mail='" + email + "' AND sifre='" + sifre + "' and durum = 0");
+
+            if (rs.next() ) {
                 // giriş başarılı    
                 System.out.println("Giriş başarılı!");
-                url = "adminHome.jsp";
+                adminId = rs.getString("id");
+                url = "admin.jsp";
 
-            } else if (rs2.next()) {
-                System.out.println("Giriş başarılı!");
-                url = "adminHome.jsp";
             } else {
                 System.out.println("Giriş başarısız!");
                 url = "index.jsp";
@@ -52,6 +66,6 @@ public class AdminBean {
         } catch (Exception e) {
             System.err.println("Giriş Yapılamadı! : " + e);
         }
-        return url;
+        gitURL = url;
     }
 }

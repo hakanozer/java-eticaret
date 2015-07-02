@@ -21,11 +21,10 @@
     </jsp:useBean>
 
     <%
-        
-        response.sendRedirect(yetenek.login(yetenek.getEmail(),yetenek.getSifre()));
-        if(yetenek.login(yetenek.getEmail(),yetenek.getSifre()).equals("admin.jsp")){
-        session.setAttribute("admin", "oturumacti");
-        }
+        yetenek.login();
+        session.setAttribute("adminId", yetenek.getAdminId());
+        response.sendRedirect(yetenek.getGitURL());
+       
 
     %>
 
