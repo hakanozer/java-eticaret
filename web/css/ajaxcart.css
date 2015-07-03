@@ -1,0 +1,40 @@
+
+/*alert*/
+div.message-alert {
+    background: none repeat scroll 0 0 #666;
+    border-radius: 0 0 3px 3px;
+    color: #dfdfdf;
+    font-size: 12px;
+    font-weight: bold;
+    left: 50%;
+    margin-left: -220px;
+    padding: 20px 60px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 333px;
+    z-index: 9999;
+    opacity: 0;
+}
+div.message-alert button {
+    background: url("img/close.png") no-repeat scroll 0 0 transparent;
+    border: none;
+    height: 9px;
+    position: absolute;
+    right: 15px;
+    top: 45%;
+    width: 9px;
+    z-index: 9999;
+}
+div.message-alert button:hover {
+    background-position: 0 -9px;
+    cursor: pointer;
+}
+/**Colorbox loading**/
+.box-loading {
+    display: block !important;
+}
+#notification .wait-loading {
+    background: url('img/loading.gif') no-repeat center center #FFF;
+    padding: 20px;
+}
