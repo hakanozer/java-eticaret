@@ -14,8 +14,18 @@ import java.sql.ResultSet;
 public class AdminBean {
 
     data db = new data();
-    private String email, sifre, adminId, gitURL;
+    private String email, sifre, gitURL;
+	 private static String adminId;
+    private String remember = null;
 
+	 public String getRemember() {
+        return remember;
+    }
+
+    public void setRemember(String remember) {
+        this.remember = remember;
+    }
+	
     public String getGitURL() {
         return gitURL;
     }
@@ -48,6 +58,17 @@ public class AdminBean {
         this.sifre = sifre;
     }
 
+	    public static String encode(String str) {
+        String encoded = DatatypeConverter.printBase64Binary(str.getBytes());
+        return encoded;
+    }
+
+    public static String decode(String str) {
+        if(str == null) {str = "";}
+        String decoded = new String(DatatypeConverter.parseBase64Binary(str));
+        return decoded;
+    }
+	
     public void login() {
         String url = "";
         try {
