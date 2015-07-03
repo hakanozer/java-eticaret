@@ -15,18 +15,22 @@
     <jsp:useBean id="yetenek" class="admin.AdminBean" scope="request">
 
         <jsp:setProperty name="yetenek" property="*"/>
+        <jsp:setProperty name="yetenek" property="remember"/> 
         <jsp:getProperty name="yetenek" property="email"/>
         <jsp:getProperty name="yetenek" property="sifre"/>
 
     </jsp:useBean>
 
     <%
-        
-        response.sendRedirect(yetenek.login(yetenek.getEmail(),yetenek.getSifre()));
-        if(yetenek.login(yetenek.getEmail(),yetenek.getSifre()).equals("admin.jsp")){
-        session.setAttribute("admin", "oturumacti");
+        yetenek.login();
+        session.setAttribute("adminId", yetenek.encode(yetenek.getAdminId()));
+        out.print(yetenek.getRemember());
+        if (yetenek.getRemember() != null) {
+            Cookie cerez = new Cookie("adminId", yetenek.encode(yetenek.getAdminId()));
+            cerez.setMaxAge(60 * 60 * 24);
+            response.addCookie(cerez);
         }
-
+        response.sendRedirect(yetenek.getGitURL());
     %>
 
 </html>
