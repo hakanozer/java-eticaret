@@ -48,8 +48,11 @@
                 <li>
                     <a href="siparisler.jsp"><i class="fa fa-gift fa-fw"></i> Sipariş Yönetimi</a>
                 </li>
+                                <li>
+                    <a href="icerik.jsp"><i class="fa fa-gift fa-fw"></i> İçerik Yönetimi</a>
+                </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="admin.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

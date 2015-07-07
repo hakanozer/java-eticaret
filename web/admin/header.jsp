@@ -29,7 +29,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Admin Paneli</a>
+            <a class="navbar-brand" href="admin.jsp">Admin Paneli</a>
         </div>
         <!-- /.navbar-header -->
 
