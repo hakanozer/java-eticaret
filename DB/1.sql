@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : localhost
 Source Server Version : 50045
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : eticaret
 
 Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2015-07-07 05:19:05
+Date: 2015-07-07 13:26:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,6 +32,25 @@ CREATE TABLE `begeniler` (
 -- ----------------------------
 -- Records of begeniler
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for duyurular
+-- ----------------------------
+DROP TABLE IF EXISTS `duyurular`;
+CREATE TABLE `duyurular` (
+  `duyuru_id` int(11) NOT NULL auto_increment,
+  `durum_id` tinyint(4) default NULL,
+  `duyuru_baslik` varchar(255) default NULL,
+  `duyuru_detay` varchar(500) default NULL,
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`duyuru_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of duyurular
+-- ----------------------------
+INSERT INTO `duyurular` VALUES ('100', '1', 'Fatihffff23423423', 'asda11111', '2015-07-07 09:55:35');
+INSERT INTO `duyurular` VALUES ('108', '1', 'kjnjknjkn', null, '2015-07-07 09:54:22');
 
 -- ----------------------------
 -- Table structure for icerikler
