@@ -10,7 +10,11 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
+<<<<<<< HEAD
+Date: 2015-07-07 13:30:48
+=======
 Date: 2015-07-07 13:26:36
+>>>>>>> origin/master
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -115,6 +119,30 @@ CREATE TABLE `kullanicilar` (
 -- Records of kullanicilar
 -- ----------------------------
 INSERT INTO `kullanicilar` VALUES ('1', 'a', 'a', 'ali', 'ali', 'a@a.com', '0', '0', '0000-00-00 00:00:00');
+
+-- ----------------------------
+-- Table structure for reklamlar
+-- ----------------------------
+DROP TABLE IF EXISTS `reklamlar`;
+CREATE TABLE `reklamlar` (
+  `id` int(11) NOT NULL auto_increment,
+  `adi` varchar(255) collate utf8_turkish_ci default NULL,
+  `gosterim` varchar(255) collate utf8_turkish_ci default NULL,
+  `bas_tarih` datetime default NULL,
+  `bit_tarih` datetime default NULL,
+  `resim` text collate utf8_turkish_ci,
+  `reklam_x` int(5) default NULL,
+  `reklam_y` int(5) default NULL,
+  `link` text collate utf8_turkish_ci,
+  `durum` tinyint(2) default NULL COMMENT '1 ise aktif 0 ise pasif',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+-- ----------------------------
+-- Records of reklamlar
+-- ----------------------------
+INSERT INTO `reklamlar` VALUES ('1', 'deneme', '5', '2015-07-07 10:49:23', '2015-07-09 10:49:26', 'Koala.jpg', '500', '300', 'link', '1');
+INSERT INTO `reklamlar` VALUES ('2', 'Hello', '20', '2015-07-07 20:00:00', '2015-07-16 20:00:00', 'Desert.jpg', '500', '300', 'link', '0');
 
 -- ----------------------------
 -- Table structure for resimler
