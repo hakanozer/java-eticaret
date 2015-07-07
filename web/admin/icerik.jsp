@@ -12,6 +12,7 @@
 <%@include file="menu.jsp"%>
 <%@include file="footer.jsp"%>
 <%
+    request.setCharacterEncoding("UTF-8");
     data ns = new data();
     ArrayList idLer = new ArrayList();
 
@@ -153,7 +154,7 @@
                                                     <% out.print(rs.getString("kisa_aciklama"));%>
                                                 </td>
                                                 <td class="text-center">
-                                                    <% out.print(rs.getString("detay"));%>
+                                                    <% out.print(rs.getString("detay").replace("/**/", "'"));%>
                                                 </td>
                                                 <td class="text-center">
                                                     <% out.print(rs.getString("tarih"));
