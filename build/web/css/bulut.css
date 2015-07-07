@@ -1,0 +1,190 @@
+body {background: #fff; color: #666; font-size: 14px; font-family: Arial; padding: 0;}
+
+content a{
+    text-decoration: none;
+    outline: 0;
+}
+content a:hover,
+content a:focus {
+    text-decoration: none;
+    outline: 0;
+}
+table a {
+    text-decoration: none;
+}table a:hover {
+    text-decoration: none;
+}
+
+
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, s
+nav li a,
+.bx-wrapper .bx-caption span {
+    font-family: 'Exo 2', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+ul {padding:0; margin: 0;}
+li {list-style: none;}
+
+.top20      {margin-top: 20px;}
+.top30      {margin-top: 30px;}
+.top40      {margin-top: 40px;}
+.bottom20   {margin-bottom: 20px;}
+.bottom30   {margin-bottom: 30px;}
+.bottom40   {margin-bottom: 40px;}
+
+content{
+    min-height: 972px;
+    display: block;
+}
+
+.baslik {
+    margin-top: 0;
+}
+.btn-two {
+    background-color: #31b0d5;
+    color: #ffffff;
+    padding: 10px 20px;
+}
+.btn-two:hover {
+    background-color: #337AB7;
+}
+
+.btn-thr:hover{
+    text-shadow: #ffffff 1px 1px 20px;
+}
+
+/*GALERİ*/
+
+.thumb          {position: relative; height:165px; overflow: hidden;}
+.thumb img      {width: 100%; z-index:0; min-height: 165px;}
+.thumb .hover   {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;}
+.thumb .hover:hover     {background: url('../img/trans.png');}
+.thumb .hover i         {display: none; font-weight: normal;}
+.thumb .hover:hover i   {
+    display: block; font-size: 36px; width: 60px; height: 60px;
+    line-height: 60px; z-index: 3; position: absolute; top: 50%; left: 50%; margin-left: -30px;
+    margin-top: -30px; color: #fff; border: 2px solid #fff; text-align: center;
+    -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%;
+}
+h5.title        {background: #222244; padding: 10px; margin: 0 0 10px 0; min-height: 35px;}
+h5.title a      {color: #fff;}
+
+/*GALERİ*/
+
+.type-file{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    padding: 5px 10px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+/* PAGINATION */
+.pagination > li > a,
+.pagination > li > span {
+    color: #222244;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    color: #222244;
+    background-color: #eee;
+    border-color: #ddd;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #222244;
+    border-color: #222244;
+}
+/*PAGINATION*/
+
+
+
+#myform img {
+    max-width: 400px;
+}
+
+.mini-img img {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+}
+/* ADMİN PANEL*/
+    /*Anasayfa*/
+        .widget .panel-footer{
+            display: block;
+            position: relative;
+            min-height: 120px;
+        }
+        .widget a{
+            background-color: #31b0d5;
+            color: #ffffff;
+            padding: 5px 15px;
+            position: absolute;
+            bottom: -15px;
+            right: 10px;
+        }
+    /*Anasayfa*/
+    /*Admin Reklam ekle tablo düzenlemesi*/
+
+    .table-design{
+        width: 65px;
+        max-width: 65px;
+    }
+
+    /*Admin Reklam ekle tablo düzenlemesi*/
+
+
+
+    /*404 Hata Sayfası*/
+/*.error-page{*/
+    /*background: url('../img/404.jpg') no-repeat center center fixed;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+/*}*/
+
+/*.error-page .inner{*/
+    /*height: 600px;*/
+/*}*/
+
+.error-page .inner .text{
+    position: relative;
+    color: #333;
+    text-shadow: 2px -2px 5px #222244;
+    width: 100%;
+    text-align: center;
+    top: 20%;
+    /*margin: 0 20%;*/
+}
+.error-page .inner .text p{font-size: 56px;}
+/*.error-page .inner .text h3{text-shadow: none;}*/
+    /*404 Hata Sayfası*/
+/* ADMİN PANEL*/

@@ -46,6 +46,9 @@
                     <!-- /input-group -->
                 </li>
                 <li>
+                    <a href="siparisler.jsp"><i class="fa fa-gift fa-fw"></i> Sipariş Yönetimi</a>
+                </li>
+                <li>
                     <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50624
+Source Server Version : 50045
 Source Host           : 127.0.0.1:3306
 Source Database       : eticaret
 
 Target Server Type    : MYSQL
-Target Server Version : 50624
+Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2015-07-05 14:10:35
+Date: 2015-07-07 05:19:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,12 +21,12 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `begeniler`;
 CREATE TABLE `begeniler` (
   `id` int(11) NOT NULL,
-  `kul_id` int(11) DEFAULT NULL,
-  `urun_id` int(11) DEFAULT NULL,
-  `puan` tinyint(4) DEFAULT NULL COMMENT '1 ile 5 arasında bir değer alabilir',
-  `ip_adresi` varchar(30) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `tarih` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `kul_id` int(11) default NULL,
+  `urun_id` int(11) default NULL,
+  `puan` tinyint(4) default NULL COMMENT '1 ile 5 arasında bir değer alabilir',
+  `ip_adresi` varchar(30) collate utf8_turkish_ci default NULL,
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
@@ -38,14 +38,14 @@ CREATE TABLE `begeniler` (
 -- ----------------------------
 DROP TABLE IF EXISTS `icerikler`;
 CREATE TABLE `icerikler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `durum` tinyint(2) DEFAULT NULL COMMENT '1 ise aktif 0 ise pasif',
-  `baslik` varchar(50) DEFAULT NULL,
-  `kisa_aciklama` varchar(100) DEFAULT NULL,
-  `detay` varchar(255) DEFAULT NULL,
-  `tarih` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL auto_increment,
+  `durum` tinyint(2) default NULL COMMENT '1 ise aktif 0 ise pasif',
+  `baslik` varchar(50) default NULL,
+  `kisa_aciklama` varchar(100) default NULL,
+  `detay` varchar(255) default NULL,
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of icerikler
@@ -65,10 +65,10 @@ INSERT INTO `icerikler` VALUES ('35', '1', 'yeni icerik', 'eklenebiliyor', '<p>b
 -- ----------------------------
 DROP TABLE IF EXISTS `kategoriler`;
 CREATE TABLE `kategoriler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `adi` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `ust_kat_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `adi` varchar(255) collate utf8_turkish_ci default NULL,
+  `ust_kat_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
@@ -80,16 +80,16 @@ CREATE TABLE `kategoriler` (
 -- ----------------------------
 DROP TABLE IF EXISTS `kullanicilar`;
 CREATE TABLE `kullanicilar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kuladi` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `sifre` varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `adi` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `soyadi` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `mail` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `seviye` tinyint(4) DEFAULT NULL COMMENT '0 ise admin\r\n1 ise kullanici\r\n',
-  `durum` tinyint(4) DEFAULT NULL COMMENT '0 ise aktif\r\n1 ise pasif',
-  `tarih` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `kuladi` varchar(50) collate utf8_turkish_ci default NULL,
+  `sifre` varchar(32) collate utf8_turkish_ci default NULL,
+  `adi` varchar(255) collate utf8_turkish_ci default NULL,
+  `soyadi` varchar(255) collate utf8_turkish_ci default NULL,
+  `mail` varchar(255) collate utf8_turkish_ci default NULL,
+  `seviye` tinyint(4) default NULL COMMENT '0 ise admin\r\n1 ise kullanici\r\n',
+  `durum` tinyint(4) default NULL COMMENT '0 ise aktif\r\n1 ise pasif',
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
@@ -102,11 +102,11 @@ INSERT INTO `kullanicilar` VALUES ('1', 'a', 'a', 'ali', 'ali', 'a@a.com', '0', 
 -- ----------------------------
 DROP TABLE IF EXISTS `resimler`;
 CREATE TABLE `resimler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `urun_id` int(11) DEFAULT NULL,
-  `resim_adi` varchar(300) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `klasor` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `urun_id` int(11) default NULL,
+  `resim_adi` varchar(300) collate utf8_turkish_ci default NULL,
+  `klasor` varchar(255) collate utf8_turkish_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
@@ -118,14 +118,14 @@ CREATE TABLE `resimler` (
 -- ----------------------------
 DROP TABLE IF EXISTS `sepet`;
 CREATE TABLE `sepet` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ref_kodu` varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `urun_id` int(11) DEFAULT NULL,
-  `adet` tinyint(4) DEFAULT NULL,
-  `fiyat` decimal(8,2) DEFAULT NULL,
-  `durum` tinyint(4) DEFAULT NULL COMMENT 'sepet durumu\r\n0 ise sipariş verilmedi\r\n1 ise sipariş verildi',
-  `tarih` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `ref_kodu` varchar(32) collate utf8_turkish_ci default NULL,
+  `urun_id` int(11) default NULL,
+  `adet` tinyint(4) default NULL,
+  `fiyat` decimal(8,2) default NULL,
+  `durum` tinyint(4) default NULL COMMENT 'sepet durumu\r\n0 ise sipariş verilmedi\r\n1 ise sipariş verildi',
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
@@ -137,35 +137,42 @@ CREATE TABLE `sepet` (
 -- ----------------------------
 DROP TABLE IF EXISTS `siparisler`;
 CREATE TABLE `siparisler` (
-  `id` int(11) NOT NULL,
-  `kul_id` int(11) DEFAULT NULL,
-  `ref_kodu` varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `fiyat` decimal(8,2) DEFAULT NULL,
-  `durum` tinyint(4) DEFAULT NULL COMMENT 'sipariş durumu\r\n0 ise hazırlanıyor\r\n1 isekargoya verildi',
-  `tarih` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+  `id` int(11) NOT NULL auto_increment,
+  `kul_id` int(11) default NULL,
+  `ref_kodu` varchar(32) collate utf8_turkish_ci default NULL,
+  `fiyat` decimal(8,2) default NULL,
+  `durum` tinyint(4) default NULL COMMENT 'sipariş durumu\r\n0 ise Hazırlanıyor\r\n1 ise Kargoya Verildi\r\n2 ise Sipariş Tamam',
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
 -- Records of siparisler
 -- ----------------------------
+INSERT INTO `siparisler` VALUES ('1', '123456', '786381787', '700.00', '0', '2015-07-07 04:34:58');
+INSERT INTO `siparisler` VALUES ('2', '312312', '434235112', '350.00', '1', '2015-07-07 04:35:25');
+INSERT INTO `siparisler` VALUES ('3', '722345', '534784421', '1255.00', '1', '2015-07-07 04:36:00');
+INSERT INTO `siparisler` VALUES ('4', '231234', '321252351', '950.00', '0', '2015-07-07 04:36:30');
+INSERT INTO `siparisler` VALUES ('5', '523412', '645744523', '430.00', '0', '2015-07-07 04:37:00');
+INSERT INTO `siparisler` VALUES ('6', '523411', '633321134', '1990.00', '2', '2015-07-07 04:37:28');
+INSERT INTO `siparisler` VALUES ('7', '945345', '121244235', '55.00', '1', '2015-07-07 04:38:46');
 
 -- ----------------------------
 -- Table structure for urunler
 -- ----------------------------
 DROP TABLE IF EXISTS `urunler`;
 CREATE TABLE `urunler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kategori_id` int(11) DEFAULT NULL,
-  `baslik` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `kisa_aciklama` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `detay` text COLLATE utf8_turkish_ci,
-  `fiyat` decimal(8,2) DEFAULT NULL,
-  `piyasa_fiyati` decimal(8,2) DEFAULT NULL,
-  `kampaya` tinyint(4) DEFAULT NULL COMMENT '1 ise kampanyalı\r\n0 ise kampanyasız',
-  `stok` smallint(6) DEFAULT NULL,
-  `tarih` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL auto_increment,
+  `kategori_id` int(11) default NULL,
+  `baslik` varchar(255) collate utf8_turkish_ci default NULL,
+  `kisa_aciklama` varchar(255) collate utf8_turkish_ci default NULL,
+  `detay` text collate utf8_turkish_ci,
+  `fiyat` decimal(8,2) default NULL,
+  `piyasa_fiyati` decimal(8,2) default NULL,
+  `kampaya` tinyint(4) default NULL COMMENT '1 ise kampanyalı\r\n0 ise kampanyasız',
+  `stok` smallint(6) default NULL,
+  `tarih` datetime default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
