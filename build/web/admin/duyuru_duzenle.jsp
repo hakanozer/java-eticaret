@@ -1,9 +1,3 @@
-<%-- 
-    Document   : icerikDuzenle
-    Created on : Jul 4, 2015, 11:17:45 PM
-    Author     : Ensar
---%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="admin.data"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +14,7 @@
         <meta name="author" content="">
 
         <title>
-            İçerik Düzenleme
+            Duyuru Düzenleme
         </title>
 
         <link href="css/bulut.css" rel="stylesheet">
@@ -46,17 +40,16 @@
 
         <style type="text/css"></style>
         <link href="../css/skin.min.css" rel="stylesheet" type="text/css"/>
-        <script src="js/ckeditor_4.5.1_standard/ckeditor/ckeditor.js" charset="utf-8" type="text/javascript"></script>
+        <script src="js/ckeditor_4.5.1_standard/ckeditor/ckeditor.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="page-wrapper">
 
             <content style="padding: 40px 0px">
-
+                
                 <div class="text-right" style="margin-bottom: 25px">
-                    <a href="icerik.jsp" class="btn btn-primary"><i class="glyphicon glyphicon-backward"> </i> Geri Dön</a>
-                </div>
-
+                        <a href="duyurular.jsp" class="btn btn-primary"><i class="glyphicon glyphicon-backward"> </i> Geri Dön</a>
+                    </div>
 
                 <section>
                     <!-- İŞLEM MESAJ -->
@@ -84,7 +77,7 @@
                             ResultSet rss = null;
                             String aid = request.getParameter("duzenleID");
                             try {
-                                rss = ns.baglan().executeQuery("select *from icerikler where id = '" + aid + "' ");
+                                rss = ns.baglan().executeQuery("select *from duyurular where duyuru_id = '" + aid + "' ");
                                 rss.next();
                             } catch (Exception ex) {
                                 
@@ -97,49 +90,40 @@
                     <div class="panel panel-primary" style="width: 75%; margin: 0 auto; margin-bottom: 50px">
 
                         <div class="panel-heading">
-                            <h4 class="panel-title text-center">İcerik Düzenleme</h4>
+                            <h4 class="panel-title text-center">Duyuru Düzenleme</h4>
                         </div>
 
                         <div class="panel-body">
 
-                            <p class="text-center">İçerik bilgilerinizi aşağıda düzenleyebilirsiniz.</p>
+                            <p class="text-center">Duyuru Düzenleme</p>
                             <hr>
-                            <form class="form-horizontal" action="icerikDuzenleAction.jsp" method="post" style="width: 90%; margin: 0 auto;">
+                            <form class="form-horizontal" action="duyuru_duzenle_action.jsp" method="post" style="width: 90%; margin: 0 auto;">
 
                                 <!-- Başlık -->
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="baslik">İçerik Başlık</label>
+                                            <label for="duyuru_baslik">Duyuru Başlık</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" required id="baslik" name="baslik" value="<% out.print(rss.getString("baslik")); %>" class="form-control">
+                                            <input type="text" required id="baslik" name="duyuru_baslik" value="<% out.print(rss.getString("duyuru_baslik")); %>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Kısa Açıklama -->
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label for="kisa_aciklama">Kısa Açıklama</label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <input type="text" id="kisa_aciklama" required name="kisa_aciklama" value="<% out.print(rss.getString("kisa_aciklama")); %>" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
+                               
+                                
 
-                                <!-- Detay -->
+                                <!--Duyuru Detay -->
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="detay">Detaylı Açıklama</label>
+                                            <label for="duyuru_detay">Detaylı Açıklama</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <textarea name="detay" id="detay" cols="30" rows="10" class="form-control"><% out.print(rss.getString("detay")); %></textarea>
+                                            <textarea name="duyuru_detay" id="detay" cols="30" rows="10" class="form-control"><% out.print(rss.getString("duyuru_detay")); %></textarea>
                                             <script>
-                                                CKEDITOR.replace('detay');
+                                                CKEDITOR.replace('duyuru_detay');
                                             </script>
                                         </div>
 
@@ -151,12 +135,12 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="durum">Durum</label>
+                                            <label for="durum_id">Durum</label>
                                         </div>
                                         <div class="col-md-9">
                                             <% String select1, select2;
                                                 
-                                                if (rss.getString("durum").equals("0")) {
+                                                if (rss.getString("durum_id").equals("0")) {
                                                     select1 = "selected";
                                                     select2 = "";
                                                 } else {
@@ -164,7 +148,7 @@
                                                     select2 = "selected";
                                                 }
                                             %>
-                                            <select class="form-control" required="required"name="durum" id="durum" >
+                                            <select class="form-control" required="required"name="durum_id" id="durum" >
 
                                                 <option value="0" <% out.print(select1); %>>Pasif</option>
                                                 <option value="1" <% out.print(select2); %>>Aktif</option>
@@ -179,9 +163,9 @@
                                     <div class="row">
                                         <div class="col-md-3"> </div>
                                         <div class="col-md-9 text-right">
-                                            <input type="hidden" name="dID" value="<% out.print(rss.getString("id")); %>"/>
+                                            <input type="hidden" name="dID" value="<% out.print(rss.getString("duyuru_id")); %>"/>
                                             <input type="submit" value="Kaydet" name="duzenle" class="btn btn-primary">
-                                            <a class="btn btn-danger" href="icerik.jsp">İptal</a>
+                                            <a class="btn btn-danger" href="duyuru.jsp">İptal</a>
                                         </div>
                                     </div>
                                 </div>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : icerik
-    Created on : Jul 4, 2015, 3:40:25 AM
-    Author     : Ensar
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="admin.data"%>
@@ -12,19 +6,17 @@
 <%@include file="menu.jsp"%>
 <%@include file="footer.jsp"%>
 <%
-    request.setCharacterEncoding("UTF-8");
     data ns = new data();
     ArrayList idLer = new ArrayList();
-
+    
     // sil işlemi varsa yapılacak işlemler
     boolean silD = (request.getParameter("silID") == null);
-    if (!silD) {
-        String silID = request.getParameter("silID");
+    if(!silD) {
+        String silID =request.getParameter("silID");
         // silme işlemi yapılıyor
-        int sil = ns.baglan().executeUpdate("delete from icerikler where id = '" + silID + "' limit 1 ");
+        int sil = ns.baglan().executeUpdate("delete from duyurular where duyuru_id = '"+silID+"' limit 1 ");
     }
-
-
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -39,7 +31,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>İçerik Yönetimi</title>
+        <title>Duyuru Yönetimi</title>
     </head>
     <body>
         <div id="wrapper">
@@ -48,14 +40,12 @@
 
                 <content style="padding: 40px 0px">
 
-                    <div class="text-right" style="margin-bottom: 25px">
-                        <a href="admin.jsp" class="btn btn-primary"><i class="glyphicon glyphicon-backward"> </i> Geri Dön</a>
-                    </div>
+                    
 
                     <section>
                         <div class="row">
                             <div class="col-md-5" style="padding-bottom: 15px">
-                                <a href="icerikEkle.jsp" class="btn btn-primary">İçerik Ekle</a>
+                                <a href="duyurular_ekle.jsp" class="btn btn-primary">Duyuru Ekle</a>
                             </div>
                             <div class="col-md-2">
                             </div>
@@ -63,21 +53,21 @@
                             <form action="">
                                 <input name="link" type="hidden" value="icerik">
                                 <div class="col-md-4">
-                                    <select name="durum" class="form-control" id="">
+                                    <select name="durum_id" class="form-control" id="">
                                         <option value="0">-- Hepsi</option>
                                         <option value="1">Aktif İçerikler</option>
                                         <option value="2">Pasif İçerikler</option>
                                         <%      String durumFiltre1 = "0";
-                                            String durumFiltre2 = "1";
-                                            if (request.getParameter("durum") != null) {
+                                                String durumFiltre2 = "1";
+                                            if (request.getParameter("durum_id") != null) {
 
-                                                if (request.getParameter("durum").equals("0")) {
+                                                if (request.getParameter("durum_id").equals("0")) {
                                                     durumFiltre1 = "0";
                                                     durumFiltre2 = "1";
-                                                } else if (request.getParameter("durum").equals("1")) {
+                                                } else if (request.getParameter("durum_id").equals("1")) {
                                                     durumFiltre1 = "1";
                                                     durumFiltre2 = "1"; // aktif olanlar
-                                                } else if (request.getParameter("durum").equals("2")) {
+                                                } else if (request.getParameter("durum_id").equals("2")) {
                                                     durumFiltre1 = "0";
                                                     durumFiltre2 = "0";// pasif olanlar
                                                 }
@@ -92,7 +82,6 @@
                         </div>
                         <hr>
 
-                        <!-- İŞLEM MESAJ -->
                         <!-- İŞLEM MESAJ -->
                         <script>
                             function yonlendirBasarili() {
@@ -117,7 +106,7 @@
                         <div id="duyurular_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
 
 
-                            <!--////////////////listeleme yapılıyor////////////////////-->
+                         
                             <div class="row">
                                 <div class="col-sm-12">
                                     <table class="table display table-hover table-condensed table-responsive dataTable no-footer" id="duyurular" role="grid" aria-describedby="duyurular_info">
@@ -125,7 +114,6 @@
                                             <tr role="row">
                                                 <th class="text-center sorting_asc" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Durum: activate to sort column descending" style="width: 95px;">Durum</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" aria-label="Başlık: activate to sort column ascending" style="width: 91px;">Başlık</th>
-                                                <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" aria-label="Kısa Açıklama: activate to sort column ascending" style="width: 171px;">Kısa Açıklama</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" aria-label="Detay: activate to sort column ascending" style="width: 97px;">Detay</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" aria-label="Eklenme Tarihi: activate to sort column ascending" style="width: 192px;">Ekle/Güncelle Tarihi</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" aria-label="İşlem: activate to sort column ascending" style="width: 177px;">İşlem</th>
@@ -135,26 +123,21 @@
                                         <tbody>
                                             <%
                                                 int i = 0;
-                                                ResultSet rs = ns.baglan().executeQuery("select *from icerikler WHERE durum = '" + durumFiltre1 + "' OR durum = '" + durumFiltre2 + "'");
+                                                ResultSet rs = ns.baglan().executeQuery("select *from duyurular WHERE durum_id = '" + durumFiltre1 + "' OR durum_id = '" + durumFiltre2 + "'");
                                                 while (rs.next()) {
-                                                    idLer.add(rs.getString("id"));
+                                                    idLer.add(rs.getString("duyuru_id"));
 
                                             %>
 
 
-
-                                            <tr role="row" class="odd">
-                                                <td class="text-center sorting_1">
-                                                    <% out.print(rs.getString("durum"));%>
+                                                <td class="text-center">
+                                                    <% out.print(rs.getString("durum_id"));%>
                                                 </td>
                                                 <td class="text-center">
-                                                    <% out.print(rs.getString("baslik"));%>
+                                                    <% out.print(rs.getString("duyuru_baslik"));%>
                                                 </td>
                                                 <td class="text-center">
-                                                    <% out.print(rs.getString("kisa_aciklama"));%>
-                                                </td>
-                                                <td class="text-center">
-                                                    <% out.print(rs.getString("detay").replace("/**/", "'"));%>
+                                                    <% out.print(rs.getString("duyuru_detay"));%>
                                                 </td>
                                                 <td class="text-center">
                                                     <% out.print(rs.getString("tarih"));
@@ -163,8 +146,8 @@
                                                 <td class="text-center">
                                                     <form action="sirket/inc/icerik.php" method="POST">
                                                         <input name="icerikId" type="hidden" value="24">
-                                                        <input name="link" type="hidden" value="icerik">
-                                                        <a href="icerikDuzenle.jsp?duzenleID=<% out.print(idLer.get(i)); %>" class="btn btn-primary">Düzenle</a>
+                                                        <input name="link" type="hidden" value="duyuru">
+                                                        <a href="duyuru_duzenle.jsp?duzenleID=<% out.print(idLer.get(i)); %>" class="btn btn-primary">Düzenle</a>
                                                         <a href="?silID=<% out.print(idLer.get(i)); %>" class="btn btn-danger">Sil</a>
                                                     </form>
                                                     <!--//////////////listeleme bitti-->

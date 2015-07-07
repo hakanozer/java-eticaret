@@ -1,15 +1,10 @@
-<%-- 
-    Document   : icerikDuzenle
-    Created on : Jul 4, 2015, 11:17:45 PM
-    Author     : Ensar
---%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="admin.data"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <%@include file="menu.jsp"%>
 <%@include file="footer.jsp"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +19,7 @@
         </title>
 
 
-        <script src="js/ckeditor_4.5.1_standard/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="js/ckeditor_4.5.1_standard/ckeditor/ckeditor.js" charset="utf-8" type="text/javascript"></script>
 
         <link href="../css/bulut.css" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap Core CSS -->
@@ -91,7 +86,7 @@
 
                             <p class="text-center">İçerik bilgilerinizi aşağıda girebilirsiniz.</p>
                             <hr>
-                            <form class="form-horizontal" action="icerikEkleAction.jsp" method="post" style="width: 90%; margin: 0 auto;">
+                            <form class="form-horizontal" action="icerikEkleAction.jsp" method="POST" style="width: 90%; margin: 0 auto;">
 
                                 <!-- Başlık -->
                                 <div class="form-group">

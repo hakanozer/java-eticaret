@@ -1,15 +1,9 @@
-<%-- 
-    Document   : iceirkDuzenleAction
-    Created on : Jul 5, 2015, 12:29:41 AM
-    Author     : Ensar
---%>
-
 <%@page import="admin.data"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <%
     request.setCharacterEncoding("UTF-8");
-    response.setCharacterEncoding("UTF-8");
 
     data ns = new data();
     // vt düzenleme işlemi
@@ -19,10 +13,13 @@
     String kisa_aciklama = request.getParameter("kisa_aciklama");
     String detay = request.getParameter("detay");
     String durum = request.getParameter("durum");
+    
+      
 
     try {
-        int yazDurum = ns.baglan().executeUpdate("insert into icerikler values (null,'" + durum + "', '" + baslik + "', '" + kisa_aciklama + "','" + detay + "',now()) ");
+        int yazDurum = ns.baglan().executeUpdate("insert into icerikler values (null,'" + durum + "', '" + baslik + "', '" + kisa_aciklama + "','" + detay.replaceAll("'", "/**/") + "',now()) ");
     } catch (Exception ex) {
+        System.out.println("Hata: "+ex);
     }
 
 %>
