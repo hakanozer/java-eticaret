@@ -46,7 +46,7 @@
 
         <style type="text/css"></style>
         <link href="../css/skin.min.css" rel="stylesheet" type="text/css"/>
-        <script src="js/ckeditor_4.5.1_standard/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="js/ckeditor_4.5.1_standard/ckeditor/ckeditor.js" charset="utf-8" type="text/javascript"></script>
     </head>
     <body>
         <div id="page-wrapper">
