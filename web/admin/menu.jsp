@@ -45,6 +45,10 @@
                     </div>
                     <!-- /input-group -->
                 </li>
+                
+                <li>
+                    <a href="kategori.jsp"><i class="fa fa-gift fa-fw"></i> Kategori Yönetimi</a>
+                </li>
                 <li>
                     <a href="siparisler.jsp"><i class="fa fa-gift fa-fw"></i> Sipariş Yönetimi</a>
                 </li>

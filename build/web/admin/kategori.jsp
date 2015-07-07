@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
@@ -8,16 +10,16 @@
 <%
     data ns = new data();
     ArrayList idler = new ArrayList();
-
+    ArrayList ustidler=new ArrayList();
+    
     // sil işlemi varsa yapılacak işlemler
     boolean silD = (request.getParameter("silID") == null);
-    if (!silD) {
+    if (!silD ) {
         String silID = request.getParameter("silID");
+        
         // silme işlemi yapılıyor
-        int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' limit 1 ");
+        int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' and durum=1 limit 1 ");
     }
-
-
 %>
 
 
@@ -68,10 +70,10 @@
         <link rel="stylesheet" type="text/css" href="static/css/jquery.tree.css">
 
         <section>
-            <div style="height: 150px;">
+            <div style="height: 10px;">
 
             </div>
-            <div class="panel panel-primary" style="width: 60%; margin: 0 auto; margin-bottom: 50px">
+            <div class="panel panel-primary" style="width: 60%; position: relative;left: 380px;top: 20px; margin-bottom: 50px">
                 <div class="panel-heading">
                     <h4 class="panel-title text-center">Ürün Kategori Ekle</h4>
                 </div>
@@ -93,22 +95,19 @@
                                         <option value="0">Kategori Seçiniz </option>";
                                         
                                         
-                                        <%                                            int k = 0;
+                                        <% 
+                                            int k = 0;
                                             ResultSet rs1 = ns.baglan().executeQuery("select *from kategoriler");
                                             while (rs1.next()) {
                                                 idler.add(rs1.getString("id"));
                                         %>
-                                        <option value="<% out.print(rs1.getString("id")); %>"><% out.print(rs1.getString("adi")); %></option>
+                                        <option value="<% out.print(rs1.getString("id"));%>"><% out.print(rs1.getString("adi")); %></option>
                                         <%k++;
                                            }%>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                                    
-                          
-                                    
-                                    
                                     
                         <!-- Kategori Adı -->
                         <div class="form-group">
@@ -134,9 +133,6 @@
                             </div>
                         </div>
                     </form>
-
-
-
 
                     <!-- İŞLEM MESAJ -->
                     <!-- İŞLEM MESAJ -->
@@ -261,11 +257,16 @@
         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
     </style>
-    <table style="margin: 0 auto" class="tg">
+    
+        
+    <table style="width: 60%; position: relative;left: 380px ;top: 20px" class="tg">
+        
         <tr>
-            <th class="tg-031e">id</th>
-            <th class="tg-031e">adi</th>
-            <th class="tg-031e">ust_kat_id</th>
+            <th class="tg-031e">ID</th>
+            <th class="tg-031e">Kategori Adı</th>
+            <th class="tg-031e">Üst Kategori ID</th>
+            <th class="text-center">Düzenle</th>
+            <th class="text-center">Sil</th>
         </tr>
 
         <%      int i = 0;
@@ -282,15 +283,19 @@
                     <input name="icerikId" type="hidden" value="24">
                     <input name="link" type="hidden" value="icerik">
                     <a href="kategoriDuzenle.jsp?duzenleID=<% out.print(idler.get(i)); %>" class="btn btn-primary">Düzenle</a>
-                    <a href="?silID=<% out.print(idler.get(i)); %>" class="btn btn-danger">Sil</a>
                 </form>
-                <!--//////////////listeleme bitti-->
+            </td>
+            <td class="text-center">
+                <form  method="POST">
+                    <input name="icerikId" type="hidden" value="24">
+                    <input name="link" type="hidden" value="icerik" disabled>
+                    <a href="?silID=<% out.print(idler.get(i));%>" class="btn btn-danger">Sil</a>
+                </form>
             </td>
         </tr>
         <%i++;
         }%>
 
     </table>
-
 </body>
 </html>
