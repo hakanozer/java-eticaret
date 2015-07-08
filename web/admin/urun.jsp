@@ -133,11 +133,14 @@
                                                     : activate to sort column ascending" style="width: 143px;">
                                                     Stok
                                                 </th>
+                                                
+                                                
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                                                    Tarih
+                                                    Düzenle
                                                     : activate to sort column ascending" style="width: 143px;">
-                                                    Tarih
+                                                    Resim
                                                 </th>
+                                                
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                     Düzenle
                                                     : activate to sort column ascending" style="width: 143px;">
@@ -187,8 +190,9 @@
                                                     <td class="text-center">
                                                         ${urunler.stok}
                                                     </td>
+                                                   
                                                     <td class="text-center">
-                                                        ${urunler.tarih}
+                                                        <a href="resim_ekle.jsp?resim_id=${urunler.id}">Ekle</a>
                                                     </td>
                                                     <td class="text-center">
                                                         <form action="urunDuzenle.jsp" method="post">
