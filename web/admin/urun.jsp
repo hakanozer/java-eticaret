@@ -42,26 +42,23 @@
                 }
             }
         </script>
-
         <title>Ürün Yönetimi</title>
     </head>
     <body>
-
         <div id="page-wrapper">
-
-
             <div class="panel panel-primary">
-
                 <div class="panel-heading">
                     <h4 class="text-center">Ürünler</h4>
                 </div>
-
                 <div class="panel-body">
-
+                    <div style="text-align: right; margin-bottom: 10px;">
+                        <form action="urunEkle.jsp" method="post">
+                            <input class="btn btn-success" type="submit" value="Yeni Ürün Ekle"/>
+                        </form>
+                    </div>
                     <section> 
                         <div class="row">
                             <div class="col-sm-6"></div>
-
                         </div>
                         <!-- Mesaj -->
                         <script>
@@ -71,7 +68,6 @@
                                 window.location.href = page_url;
                             }
                             ;
-
                             function yonlendirBasarisiz() {
                                 var page_url = window.location.href;
                                 page_url = page_url.replace("&sonuc=basarisiz", "");
@@ -79,76 +75,59 @@
                             }
                             ;
                         </script>
-
                         <!-- dataTable işlemleri -->
-
                         <div id="siparisler_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-
-
                             <!-- listeleme yapılıyor -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <table class="table display table-hover table-condensed table-responsive dataTable no-footer" id="siparisler" role="grid" aria-describedby="siparisler_info">
-
                                         <thead>
                                             <tr role="row">
-                                                <th class="text-center sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
-                                                    ID
-                                                    : activate to sort column descending" style="width: 170px;">
-                                                    ID
-                                                </th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                                                    Kategori
-                                                    : activate to sort column ascending" style="width: 137px;">
-                                                    Kategori
-                                                </th><th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                                                         Başlık
-                                                         : activate to sort column ascending" style="width: 130px;">
+                                                    Başlık
+                                                    : activate to sort column ascending" style="width: 150px;">
                                                     Başlık
                                                 </th><th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
+                                                         Kategori
+                                                         : activate to sort column ascending" style="width: 100px;">
+                                                    Kategori
+                                                </th><th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                          Açıklama
-                                                         : activate to sort column ascending" style="width: 246px;">
+                                                         : activate to sort column ascending" style="width: 250px;">
                                                     Açıklama
                                                 </th><th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                                                         Detay
-                                                         : activate to sort column ascending" style="width: 130px;">
-                                                    Detay
-                                                </th><th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                          Fiyat
-                                                         : activate to sort column ascending" style="width: 143px;">
+                                                         : activate to sort column ascending" style="width: 100px;">
                                                     Fiyat
                                                 </th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                     Piyasa Fiyatı
-                                                    : activate to sort column ascending" style="width: 143px;">
-                                                    Piyasa Fiyatı
+                                                    : activate to sort column ascending" style="width: 100px;">
+                                                    Piyasa
                                                 </th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                     Kampanya
-                                                    : activate to sort column ascending" style="width: 143px;">
+                                                    : activate to sort column ascending" style="width: 100px;">
                                                     Kampanya
                                                 </th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                     Stok
-                                                    : activate to sort column ascending" style="width: 143px;">
+                                                    : activate to sort column ascending" style="width: 100px;">
                                                     Stok
                                                 </th>
-                                                
-                                                
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
-                                                    Düzenle
-                                                    : activate to sort column ascending" style="width: 143px;">
+                                                    Resim
+                                                    : activate to sort column ascending" style="width: 10px;">
                                                     Resim
                                                 </th>
-                                                
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                     Düzenle
-                                                    : activate to sort column ascending" style="width: 143px;">
+                                                    : activate to sort column ascending" style="width: 10px;">
                                                     Düzenle
                                                 </th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="
                                                     Sil
-                                                    : activate to sort column ascending" style="width: 143px;">
+                                                    : activate to sort column ascending" style="width: 10px;">
                                                     Sil
                                                 </th></tr>
                                         </thead>
@@ -156,27 +135,21 @@
                                         <tbody>
                                             <jsp:useBean id="yetenek" class="admin.urunBean" scope="request">
                                                 <jsp:setProperty name="yetenek" property="*"/>
-
                                             </jsp:useBean>
-
+                                            <% ResultSet rs = ns.baglan().executeQuery("select *from urunler left join kategoriler on urunler.kategori_id=kategoriler.id"); %>
                                             <c:forEach var="urunler" items="${yetenek.urunListe()}">
-
-
                                                 <tr role="row" class="odd">
-                                                    <td class="text-center sorting_1">
-                                                        ${urunler.id}
-                                                    </td>
-                                                    <td class="text-center">
-                                                        ${urunler.kategori_id}
-                                                    </td>
                                                     <td class="text-center">
                                                         ${urunler.baslik}
                                                     </td>
                                                     <td class="text-center">
-                                                        ${urunler.kisa_aciklama}
+                                                        <%
+                                                            rs.next();
+                                                            out.print(rs.getString("adi"));
+                                                        %>
                                                     </td>
                                                     <td class="text-center">
-                                                        ${urunler.detay}
+                                                        ${urunler.kisa_aciklama}
                                                     </td>
                                                     <td class="text-center">
                                                         ${urunler.fiyat}
@@ -185,27 +158,34 @@
                                                         ${urunler.piyasa_fiyati}
                                                     </td>
                                                     <td class="text-center">
-                                                        ${urunler.kampaya}
+                                                        <%
+                                                            if (rs.getString("kampaya").equals("0")) {
+                                                                out.print("Kampanyasız");
+                                                            } else if (rs.getString("kampaya").equals("1")) {
+                                                                out.print("Kampanyalı");
+                                                            } else {
+                                                                out.print("Belirtilmemiş");
+                                                            }
+                                                        %>
                                                     </td>
                                                     <td class="text-center">
                                                         ${urunler.stok}
                                                     </td>
-                                                   
                                                     <td class="text-center">
-                                                        <a href="resim_ekle.jsp?resim_id=${urunler.id}">Ekle</a>
+                                                        <form action="resim_ekle.jsp?resim_id=${urunler.id}" method="post">
+                                                            <input class="btn btn-info" type="submit" value="Resim"/>
+                                                        </form>
                                                     </td>
                                                     <td class="text-center">
                                                         <form action="urunDuzenle.jsp" method="post">
                                                             <input type="hidden" name="gelenId" value="${urunler.id}"/>
-                                                            <input class="btn btn-info" type="submit" value="Seç"/>
+                                                            <input class="btn btn-primary" type="submit" value="Düzenle"/>
                                                         </form>
                                                     </td>
                                                     <td class="text-center">
                                                         <input class="btn btn-danger" id="silinecek" onclick="uyari(${urunler.id})" type="submit" value="Sil"/>
-                                                        <!--listeleme bitti-->
                                                     </td>
                                                 </tr>
-
                                             </c:forEach>
                                         </tbody>
                                     </table>
@@ -215,28 +195,21 @@
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="siparisler_info" role="status" aria-live="polite">1 / 1
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
-
                     </section>
-
                 </div>
-
             </div>
-
-
-            <script src="bower_components/jquery/dist/jquery.min.js"></script>
-            <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-            <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
-            <script src="bower_components/raphael/raphael-min.js"></script>
-            <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
-            <script src="dist/js/sb-admin-2.js"></script>
-
-            <script>
+        </div>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <script src="bower_components/raphael/raphael-min.js"></script>
+        <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+        <script src="dist/js/sb-admin-2.js"></script>
+        <script>
                                                             var jk = jQuery.noConflict();
                                                             jk(document).ready(function () {
                                                                 if (jk('table.display')) {
@@ -255,15 +228,12 @@
                                                                                 "next": ">>>",
                                                                                 "last": "Son"
                                                                             }
-
                                                                         },
                                                                         "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Hepsi"]],
                                                                         "pagingType": "full"
                                                                     });
                                                                 }
                                                             });
-
-            </script>
+        </script>
     </body>
-
 </html>
