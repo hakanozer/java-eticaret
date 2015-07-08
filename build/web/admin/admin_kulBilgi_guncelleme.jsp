@@ -85,7 +85,7 @@
                                         <label for="fMail">Soyadınız:</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fSoyadi" id="fSoyadi" value="Bulut">
+                                        <input class="form-control" type="text" name="fSoyadi" id="fSoyadi" value="<% out.print(rss.getString("soyadi")); %>">
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                         <label for="fMail">Kullanıcı Adınız</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fMail" id="" value="demo@jsonbulut.com">
+                                        <input class="form-control" type="text" name="fMail" id="" value="<% out.print(rss.getString("kuladi")); %>">
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                         <label for="fMail">Mail Adresiniz</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fMail" id="" value="demo@jsonbulut.com">
+                                        <input class="form-control" type="text" name="fMail" id="" value="<% out.print(rss.getString("mail")); %>">
                                     </div>
                                 </div>
                             </div>
