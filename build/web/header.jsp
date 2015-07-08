@@ -86,8 +86,11 @@
 
     </head>
 
-    <%     data d = new data();
+    <%  
+        
+        data d = new data();
         ArrayList idLer = new ArrayList();
+        
     %>
     <body class="   cms-index-index cms-home">
         <section class="mt-container">
@@ -301,12 +304,12 @@
                                                 <marquee behavior="scroll" direction="left"><p class="break-new">
                                                         <%
                                                             int i = 0;
-                                                            ResultSet rs = d.baglan().executeQuery("select *from duyurular WHERE durum = '1'");
+                                                            ResultSet rs = d.baglan().executeQuery("select *from duyurular WHERE durum_id = '1'");
                                                             while (rs.next()) {
                                                               
 
                                                         %>
-                                                        <span><a href="duyuruDetay.jsp"><% out.print(rs.getString("baslik"));%></a>
+                                                        <span><a href="duyuruDetay.jsp?IDd=<% out.print(rs.getString("duyuru_id"));  %>"><% out.print(rs.getString("duyuru_baslik"));%></a>
                                                         </span> 
                                                         <%i++;
                                                             }%>
@@ -504,15 +507,8 @@
                         <div class="header-menu">
                             <div class="nav-top v-grid ">
                                 <div class="container box-menu">
-                                    <div class="inner-box-menu">
-                                        <div class="row">
-
-
-                                            <%@include file="sol_menu.jsp" %>%>
-
-
-
-
+                                    
+                                            
                                             <div class="nav-top-inner col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <!-- navigation BOF -->
                                                 <div class="mt-navigation hidden-xs clearfix">
@@ -552,7 +548,152 @@
                                                         });
                                                     });
                                                 </script>
-                                                <!-- navigation EOF -->                        </div>
+                                                <!-- navigation EOF -->
+                                            </div>
+                                            <div class="inner-box-menu">
+                                        <div class="row">
+
+                                            <div class="main_categroy_left">
+                                                <div class="col-left col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                    <div class="main_categroy_left_inner">
+                                                        <!-- navigation BOF -->
+                                                        <div class="mt-navigation-vertical block hidden-xs">
+                                                            <div class="block-title">
+                                                                <strong>
+                                                                    <i aria-hidden="true" class="icon_menu"></i>
+                                                                    <span>Kategoriler</span>
+                                                                </strong>
+                                                            </div>
+                                                            
+                                                            <%
+                                                            
+                                                            ResultSet ts = d.baglan().executeQuery("select *from kategoriler WHERE ust_kat_id = '0'");
+                                                            int j = 0;
+                                                                while (ts.next()) {
+                                                                    
+                                                            %>
+                                                            
+                                                            
+                                                            
+                                                            <div class="mt-main-menu-vertical">
+                                                                <ul class="megamenu-vertical">
+                                                                    <!--			<li class="level0 home level-top active m-dropdown parent">
+                                                                            <a href="http://mt-quartz02.magentothemes.net/index.php/" class="level-top"><span>Home</span></a>
+                                                                    </li> 
+                                                                    -->
+                                                                    <li class="level0 nav-1 level-top first mega_align_left parent">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                        <div class="level0 sub-wrapper shown-sub" data-width="" style="display:none; width: px; height:auto;">
+                                                                            <div class="mtmenu-block mtmenu-block-top grid-full std">
+
+                                                                            </div>
+                                                                            <div class="mtmenu-block mtmenu-block-center menu-items grid12-12 itemgrid itemgrid-4col">
+                                                                                <ul class="level0">
+                                                                                    <li class="level1 groups item nav-1-1 first">
+                                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion.html">
+
+                                                                                            <span class="title_group">Suggestion</span>
+                                                                                        </a>
+                                                                                        <div class="groups-wrapper">
+                                                                                            <ul class="level1">
+                                                                                                <li class="level2 nav-1-1-1 first">
+                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/dreese.html">
+
+                                                                                                        <span>Dresses</span>
+                                                                                                    </a>
+                                                                                                </li><li class="level2 nav-1-1-2">
+                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/coat-jacket.html">
+
+                                                                                                        <span>Coat &amp; Jacket</span>
+                                                                                                    </a>
+                                                                                                </li><li class="level2 nav-1-1-3">
+                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/tops-tees.html">
+
+                                                                                                        <span>Tops &amp; Tees</span>
+                                                                                                    </a>
+                                                                                                </li><li class="level2 nav-1-1-4">
+                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/hoodie-sweatshirts.html">
+
+                                                                                                        <span>Hoodie &amp; Sweatshirts</span>
+                                                                                                    </a>
+                                                                                                </li><li class="level2 nav-1-1-5">
+                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/swimwear.html">
+
+                                                                                                        <span>Swimwear</span>
+                                                                                                    </a>
+                                                                                                </li><li class="level2 nav-1-1-6 last">
+                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/intimates.html">
+
+                                                                                                        <span>Intimates</span>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="mtmenu-block mtmenu-block-bottom grid-full std">
+                                                                                <div class="vertical-bottom">
+                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/intimates.html?___store=default"><span>See all Women's Fasion</span></a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li><li class="level0 nav-2 level-top m-dropdown">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/men-s-fashion.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li><li class="level0 nav-3 level-top m-dropdown">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/jewelry-watches.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li><li class="level0 nav-4 level-top">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/shoes.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li><li class="level0 nav-5 level-top">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/glasses.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li><li class="level0 nav-6 level-top m-dropdown">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/bags.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li><li class="level0 nav-7 level-top">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/kids-fashion.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li><li class="level0 nav-8 level-top m-dropdown last">
+                                                                        <a href="http://mt-quartz02.magentothemes.net/index.php/accessories.html" class="level-top">
+
+                                                                            <span><% out.print(ts.getString("adi"));%></span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <%j++;}%>
+                                                                        
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <script type="text/javascript">
+                                                            $mt(function () {
+                                                                $mt(".megamenu-vertical").vmegamenu({
+                                                                    'animation': 'slideWidth',
+                                                                    'direction': 'vertical',
+                                                                    'mm_timeout': 50
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <!-- navigation EOF -->                                </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="header-dropdow">
@@ -571,32 +712,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-top-cart ">
-                                                <div class="mt-maincart">
-                                                    <span class="mt-cart-loading">Loading...</span>
-                                                    <div class="mt-cart">
-                                                        <div class="mt-icon-ajaxcart">
-                                                            <div class="mt-icon icon-cart second_primary_color_bg">
-                                                                <i aria-hidden="true" class="icon_bag_alt"></i>
-                                                            </div>
-                                                            <a class="mt-cart-label primary_color_bg" href="http://mt-quartz02.magentothemes.net/index.php/checkout/cart/">
-                                                                <span class="print">
-                                                                    <span class="items">0 item</span>
-                                                                    - <span class="price">$0.00</span>                    </span>
-                                                            </a>
-
-                                                        </div>
-                                                        <div class="ajaxcart">
-                                                            <div class="search-form-border"></div>
-                                                            <div class="mt-ajax-container">
-                                                                <p class="no-items-in-cart">You have no items in your shopping cart.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <script type="text/javascript">
-                                                        var datatext = {};
-                                                        datatext.load = 'processing';
-                                                    </script>                                </div>
+                                            
                                                 <div class="popup-ajaxcart" style="display: none">
                                                     <div id="inline">
                                                         <div class="cart-ajax-title"></div>
