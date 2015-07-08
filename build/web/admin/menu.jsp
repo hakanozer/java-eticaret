@@ -45,15 +45,21 @@
                     </div>
                     <!-- /input-group -->
                 </li>
-                
+
                 <li>
                     <a href="kategori.jsp"><i class="fa fa-gift fa-fw"></i> Kategori Yönetimi</a>
                 </li>
                 <li>
                     <a href="siparisler.jsp"><i class="fa fa-gift fa-fw"></i> Sipariş Yönetimi</a>
                 </li>
-                                <li>
+                <li>
+                    <a href="urun.jsp"><i class="fa fa-gift fa-fw"></i> Ürün Yönetimi</a>
+                </li>
+                <li>
                     <a href="icerik.jsp"><i class="fa fa-gift fa-fw"></i> İçerik Yönetimi</a>
+                </li>
+                <li>
+                    <a href="kullanici.jsp"><i class="fa fa-user fa-fw"></i> Kullanıcı Yönetimi</a>
                 </li>
                 <li>
                     <a href="admin.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
