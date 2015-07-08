@@ -10,15 +10,26 @@
 <%
     data ns = new data();
     ArrayList idler = new ArrayList();
-    ArrayList ustidler=new ArrayList();
-    
+    ArrayList ustidler = new ArrayList();
+    try {
+        ResultSet rs3 = ns.baglan().executeQuery("select ust_kat_id from kategoriler");
+        while (rs3.next()) {
+            ustidler.add(rs3.getString("ust_kat_id"));
+            System.err.println("ustasşdmas : " + ustidler);
+        }
+    } catch (Exception e) {
+        System.err.println("MySQL Bağlantı Hatası Sil:" + e);
+    }
+
     // sil işlemi varsa yapılacak işlemler
     boolean silD = (request.getParameter("silID") == null);
-    if (!silD ) {
+    if (!silD) {
         String silID = request.getParameter("silID");
-        
-        // silme işlemi yapılıyor
-        int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' and durum=1 limit 1 ");
+        if (silID.equals(ustidler)) {
+                     
+        } else {
+            int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' and durum=1 limit 1 ");
+        }
     }
 %>
 
@@ -61,12 +72,17 @@
         <script type="text/javascript" src="static/js/jquery.tree.js"></script>
         <script type="text/javascript">
             function selectSecim() {
-                    var deger = $('#urunTopKategori').val();
-                    window.location.href = "?ustKat="+deger;
-                }
-            
-            
+                var deger = $('#urunTopKategori').val();
+                window.location.href = "?ustKat=" + deger;
+            }
+
+
         </script>
+        <script type="text/javascript">
+            function alertName() {
+                alert("Alt Kategorisi olan Üst Kategori Silinemez.");
+            }
+        </script> 
         <link rel="stylesheet" type="text/css" href="static/css/jquery.tree.css">
 
         <section>
@@ -93,9 +109,9 @@
 
                                     <select class="form-control" name="topCategory" id="urunTopKategori">
                                         <option value="0">Kategori Seçiniz </option>";
-                                        
-                                        
-                                        <% 
+
+
+                                        <%
                                             int k = 0;
                                             ResultSet rs1 = ns.baglan().executeQuery("select *from kategoriler");
                                             while (rs1.next()) {
@@ -103,12 +119,12 @@
                                         %>
                                         <option value="<% out.print(rs1.getString("id"));%>"><% out.print(rs1.getString("adi")); %></option>
                                         <%k++;
-                                           }%>
+                                            }%>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                                    
+
                         <!-- Kategori Adı -->
                         <div class="form-group">
                             <div class="row">
@@ -128,7 +144,7 @@
                                 <div class="col-md-3"> </div>
                                 <div class="col-md-9 text-right">
                                     <input type="submit" value="Kaydet" name="kaydet" class="btn btn-primary">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -154,7 +170,7 @@
 
 
                 </div>
-                
+
             </div>
         </section>
     </content>
@@ -257,10 +273,10 @@
         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
     </style>
-    
-        
+
+
     <table style="width: 60%; position: relative;left: 380px ;top: 20px" class="tg">
-        
+
         <tr>
             <th class="tg-031e">ID</th>
             <th class="tg-031e">Kategori Adı</th>
@@ -294,7 +310,7 @@
             </td>
         </tr>
         <%i++;
-        }%>
+            }%>
 
     </table>
 </body>
