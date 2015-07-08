@@ -306,7 +306,7 @@
                                                               
 
                                                         %>
-                                                        <span><a href="duyuruDetay.jsp"><% out.print(rs.getString("duyuru_baslik"));%></a>
+                                                        <span><a href="duyuruDetay.jsp?IDd=<% out.print(rs.getString("duyuru_id"));  %>"><% out.print(rs.getString("duyuru_baslik"));%></a>
                                                         </span> 
                                                         <%i++;
                                                             }%>
