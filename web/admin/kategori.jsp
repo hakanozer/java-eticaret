@@ -25,11 +25,16 @@
     boolean silD = (request.getParameter("silID") == null);
     if (!silD) {
         String silID = request.getParameter("silID");
-        if (silID.equals(ustidler)) {
-                     
-        } else {
+        for(int i=0;i<ustidler.size();i++){
+        if (silID.equals(ustidler.get(i))) {
+            out.print("<script type='text/javascript'>\n");
+            out.print("alert( " + "' Alt Kategorisi olan Üst Kategori Silinemez '" + ");\n");
+            out.print("</script>\n");
+        }
+        else {
             int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' and durum=1 limit 1 ");
         }
+        }  
     }
 %>
 
