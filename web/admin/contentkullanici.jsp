@@ -23,7 +23,6 @@
     }
 
 
-
 %>
 <!DOCTYPE html>
 <html>
@@ -68,7 +67,6 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Kullanıcı Düzenleme Tablosu
 
                             <div class="dataTables_filter"><a class="btn btn-success" href="kullaniciEkle.jsp">Yeni Kullanıcı Ekle</a></div>
                         </div>
@@ -91,8 +89,8 @@
                                             <th>Mail</th>
                                             <th>Seviye</th>
                                             <th>Tarih</th>
-                                            <th>Engel Durum</th>
-                                            <th>Düzenle</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -111,18 +109,23 @@
                                             <td><%=rs.getString("adi")%></td>
                                             <td><%=rs.getString("soyadi")%></td>
                                             <td><%=rs.getString("mail")%></td>
-                                            <td><%=rs.getString("seviye")%></td>
+                                            <%if (rs.getString("seviye").equals("0")) {%>
+                                                    <td>Admin</td>
+                                                <%} else if (rs.getString("seviye").equals("1")) {%>
+                                                    <td>Üye</td>
+                                                <%}%>
+                                            
                                             <td><%=rs.getString("tarih")%></td>
                                             <%if (rs.getString("durum").equals("0")) {%>
                                             <td><a   class="btn btn-danger" href="?engelleID=<%out.print(idLer.get(i));%>">Engelle</a></td>
                                             <%} else if (rs.getString("durum").equals("1")) {%>
-                                            <td><a  class="btn btn-success" href="?engelKaldirID=<%out.print(idLer.get(i));%>">Engel Kaldır</a></td>
+                                            <td><a style="margin-left: 0 auto" class="btn btn-success" href="?engelKaldirID=<%out.print(idLer.get(i));%>">Engel Kaldır</a></td>
                                             <%}%>
-                                            <td><a class="btn btn-warning"  href="kullaniciDuzenle.jsp?duzenleID=<% out.print(idLer.get(i)); %>">Düzenle</a></td>
-                                    
-                                    </tr>
+                                            <td><a class="btn btn-primary"  href="kullaniciDuzenle.jsp?duzenleID=<% out.print(idLer.get(i)); %>">Düzenle</a></td>
 
-                                    <% i++;
+                                        </tr>
+
+                                        <% i++;
                                         }%>
                                     </tbody>
                                 </table>
