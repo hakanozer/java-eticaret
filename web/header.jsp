@@ -301,12 +301,12 @@
                                                 <marquee behavior="scroll" direction="left"><p class="break-new">
                                                         <%
                                                             int i = 0;
-                                                            ResultSet rs = d.baglan().executeQuery("select *from duyurular WHERE durum = '1'");
+                                                            ResultSet rs = d.baglan().executeQuery("select *from duyurular WHERE durum_id = '1'");
                                                             while (rs.next()) {
                                                               
 
                                                         %>
-                                                        <span><a href="duyuruDetay.jsp"><% out.print(rs.getString("baslik"));%></a>
+                                                        <span><a href="duyuruDetay.jsp"><% out.print(rs.getString("duyuru_baslik"));%></a>
                                                         </span> 
                                                         <%i++;
                                                             }%>
