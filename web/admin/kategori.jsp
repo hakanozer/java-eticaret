@@ -30,9 +30,10 @@
             out.print("<script type='text/javascript'>\n");
             out.print("alert( " + "' Alt Kategorisi olan Üst Kategori Silinemez '" + ");\n");
             out.print("</script>\n");
+            break;
         }
         else {
-            int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' and durum=1 limit 1 ");
+            int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' limit 1 ");
         }
         }  
     }
