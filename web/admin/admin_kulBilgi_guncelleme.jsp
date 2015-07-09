@@ -1,4 +1,5 @@
-     <%@page contentType="text/html" pageEncoding="UTF-8"%>
+     <%@page import="java.util.Enumeration"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@include file="header.jsp"%>
     <%@include file="menu.jsp"%>
 
@@ -15,15 +16,19 @@
     boolean kulDuzenle = (request.getParameter("kulDuzenle") == null);
     if(!kulDuzenle) {
         // düzenleme işlemi yap
-        String gid = request.getParameter("id");
+        String gid = request.getParameter("fId");
         String adi = request.getParameter("adi");
         String soyadi = request.getParameter("soyadi");
         String kuladi = request.getParameter("kuladi");
         String mail = request.getParameter("mail");
         
         try {
-            int yazDurum = ns.baglan().executeUpdate("update duyurular set adi = '"+adi+"', soyadi = '"+soyadi+"', kuladi = '"+kuladi+"', mail = '"+mail+"'  where id = '"+gid+"' limit 1");
+            
+            int yazDurum = ns.baglan().executeUpdate("update kullanicilar set adi = '"+adi+"', soyadi = '"+soyadi+"', kuladi = '"+kuladi+"', mail = '"+mail+"'  where id = '"+gid+"' limit 1");
+             System.out.println("yaz sonuç:" + yazDurum);
+             System.out.println("update duyurular set adi = '"+adi+"', soyadi = '"+soyadi+"', kuladi = '"+kuladi+"', mail = '"+mail+"'  where id = '"+gid+"' limit 1");
             if(yazDurum > 0) {
+                
                 System.out.println("Düzenleme Başarılı");
             }
         }catch (Exception ex) {
@@ -66,7 +71,7 @@
 
 
                         <form action="" method="post">
-                            <input name="fId" type="hidden" value="20">
+                            <input name="fId" type="hidden" value="<% out.print(rss.getString("id")); %>">
 
                             <div class="form-group">
                                 <div class="row">
@@ -74,7 +79,7 @@
                                         <label for="fAdi">Adınız:</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fAdi" id="fAdi" value="<% out.print(rss.getString("adi")); %> ">
+                                        <input class="form-control" type="text" name="adi" id="adi" value="<% out.print(rss.getString("adi")); %> ">
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +90,7 @@
                                         <label for="fMail">Soyadınız:</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fSoyadi" id="fSoyadi" value="<% out.print(rss.getString("soyadi")); %>">
+                                        <input class="form-control" type="text" name="soyadi" id="soyadi" value="<% out.print(rss.getString("soyadi")); %>">
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +101,7 @@
                                         <label for="fMail">Kullanıcı Adınız</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fMail" id="" value="<% out.print(rss.getString("kuladi")); %>">
+                                        <input class="form-control" type="text" name="kuladi" id="kuladi" value="<% out.print(rss.getString("kuladi")); %>">
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +112,7 @@
                                         <label for="fMail">Mail Adresiniz</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="fMail" id="" value="<% out.print(rss.getString("mail")); %>">
+                                        <input class="form-control" type="text" name="mail" id="mail" value="<% out.print(rss.getString("mail")); %>">
                                     </div>
                                 </div>
                             </div>
@@ -115,6 +120,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9 col-md-offset-3">
+                               
                                         <input class="btn btn-default btn-sm btn-primary" type="submit" name="kulDuzenle" value="Kaydet">
                                         <a href="admin_ayarlar.jsp" class="btn btn-sm btn-danger">İptal</a>
                                         <a class="btn btn-warning btn-sm" href="admin_sifre_degistirme.jsp">Şifre Değiştir</a>
