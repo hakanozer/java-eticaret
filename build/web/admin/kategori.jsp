@@ -9,33 +9,44 @@
 <%@include file="footer.jsp"%>
 <%
     data ns = new data();
-    ArrayList idler = new ArrayList();
-    ArrayList ustidler = new ArrayList();
+    ArrayList<String> idler = new ArrayList<String>();
+    ArrayList<String> ustidler = new ArrayList<String>();
+    
     try {
         ResultSet rs3 = ns.baglan().executeQuery("select ust_kat_id from kategoriler");
         while (rs3.next()) {
             ustidler.add(rs3.getString("ust_kat_id"));
-            System.err.println("ustasşdmas : " + ustidler);
+           
         }
     } catch (Exception e) {
         System.err.println("MySQL Bağlantı Hatası Sil:" + e);
     }
 
+
+
     // sil işlemi varsa yapılacak işlemler
     boolean silD = (request.getParameter("silID") == null);
+    boolean eslemevarmı=false;
     if (!silD) {
-        String silID = request.getParameter("silID");
+        String sil = request.getParameter("silID");
         for(int i=0;i<ustidler.size();i++){
-        if (silID.equals(ustidler.get(i))) {
+        if (sil.equals(ustidler.get(i))) {
             out.print("<script type='text/javascript'>\n");
+            
             out.print("alert( " + "' Alt Kategorisi olan Üst Kategori Silinemez '" + ");\n");
-            out.print("</script>\n");
-            break;
+            
+            out.print("</script>");
+            
+            eslemevarmı=true;
         }
-        else {
-            int sil = ns.baglan().executeUpdate("delete from kategoriler where id = '" + silID + "' limit 1 ");
+        
+        } 
+        //for döngüsü dışına yazılmalı silme işlemi. Çünkü tamamını kontrol ettikten sonra silme işlemi yapılmalı
+        //ilk kodumuzda ust id ile eşleşmediği an her halükarda silme işlemi yapıyordu.
+        if(eslemevarmı){
+        //eslesme yoksa yani false ise silme işlemi yap
+        int sil1 = ns.baglan().executeUpdate("delete from kategoriler where id = '" + sil + "' limit 1 ");
         }
-        }  
     }
 %>
 
