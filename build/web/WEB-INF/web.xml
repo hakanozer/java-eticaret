@@ -5,6 +5,22 @@
         <param-value>Development</param-value>
     </context-param>
     <servlet>
+        <servlet-name>FileUploadDBServlet</servlet-name>
+        <servlet-class>slider.FileUploadDBServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>duzenleServlet</servlet-name>
+        <servlet-class>slider.duzenleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileUploadDBServlet</servlet-name>
+        <url-pattern>/faces/admin/uploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>duzenleServlet</servlet-name>
+        <url-pattern>/faces/admin/duzenleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
