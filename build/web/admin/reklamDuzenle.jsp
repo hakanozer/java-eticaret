@@ -20,7 +20,7 @@
         <meta name="author" content="">
 
         <title>
-            İçerik Düzenleme
+            Reklam Düzenleme
         </title>
 
         <link href="css/bulut.css" rel="stylesheet">
@@ -54,9 +54,8 @@
             <content style="padding: 40px 0px">
 
                 <div class="text-right" style="margin-bottom: 25px">
-                    <a href="icerik.jsp" class="btn btn-primary"><i class="glyphicon glyphicon-backward"> </i> Geri Dön</a>
+                    <a href="reklam.jsp" class="btn btn-primary"><i class="glyphicon glyphicon-backward"> </i> Geri Dön</a>
                 </div>
-
 
                 <section>
                     <!-- İŞLEM MESAJ -->
@@ -84,7 +83,7 @@
                             ResultSet rss = null;
                             String aid = request.getParameter("duzenleID");
                             try {
-                                rss = ns.baglan().executeQuery("select *from icerikler where id = '" + aid + "' ");
+                                rss = ns.baglan().executeQuery("select * from reklamlar where id = '" + aid + "' ");
                                 rss.next();
                             } catch (Exception ex) {
 
@@ -95,57 +94,100 @@
 
 
                     <div class="panel panel-primary" style="width: 75%; margin: 0 auto; margin-bottom: 50px">
-
                         <div class="panel-heading">
-                            <h4 class="panel-title text-center">İcerik Düzenleme</h4>
+                            <h4 class="panel-title text-center">Reklam Düzenleme</h4>
                         </div>
-
                         <div class="panel-body">
-
-                            <p class="text-center">İçerik bilgilerinizi aşağıda düzenleyebilirsiniz.</p>
+                            <p class="text-center">Reklam Bilgilerinizi Düzenleyebilirsiniz.</p>
                             <hr>
-                            <form class="form-horizontal" action="icerikDuzenleAction.jsp" method="post" style="width: 90%; margin: 0 auto;">
-
-                                <!-- Başlık -->
-                                <div class="form-group">
+                            <form class="form-horizontal" action="reklamDuzenleAction.jsp" method="post" style="width: 90%; margin: 0 auto;"
+                                  <!-- reklam adı -->
+                                  <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="baslik">İçerik Başlık</label>
+                                            <label for="adi">Reklam Adı</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" required id="baslik" name="baslik" value="<% out.print(rss.getString("baslik")); %>" class="form-control">
+                                            <input type="text" id="adi" name="adi" value="<% out.print(rss.getString("adi")); %>" class="form-control" required="">
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Kısa Açıklama -->
+                                <!-- Gösterim Sayısı -->
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="kisa_aciklama">Kısa Açıklama</label>
+                                            <label for="gosterim">Gösterim Sayısı</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" id="kisa_aciklama" required name="kisa_aciklama" value="<% out.print(rss.getString("kisa_aciklama")); %>" class="form-control">
+                                            <input type="text" id="gosterim" name="gosterim" value="<% out.print(rss.getString("gosterim")); %>" class="form-control" required="">
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Detay -->
+                                <!-- Başlangıç Tarihi -->
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="detay">Detaylı Açıklama</label>
+                                            <label for="baslangic">Başlangıç Tarihi</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <textarea name="detay" id="detay" cols="30" rows="10" class="form-control"><% out.print(rss.getString("detay")); %></textarea>
-                                            <script>
-                                                CKEDITOR.replace('detay');
-                                            </script>
+                                            <input type="datetime"  value="<% out.print(rss.getString("bas_tarih")); %>" name="baslangic" id="baslangic" class="form-control" required="">
                                         </div>
-
-
                                     </div>
-
+                                </div>
+                                <!-- bitis Tarihi -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="bitis">Bitiş Tarihi</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="datetime" value="<% out.print(rss.getString("bit_tarih")); %>" name="bitis" id="bitis" class="form-control" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Reklam Görseli -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="dosya">Reklam Görseli</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" name="dosya" value="<% out.print(rss.getString("resim")); %>" id="dosya" class="form-control" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Reklam Genişlik -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="genislik">Reklam Genişlik</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="genislik" name="genislik" value="<% out.print(rss.getString("reklam_x")); %>" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Reklam Yükseklik -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="yukseklik">Reklam Yükseklik</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="yukseklik" name="yukseklik" value="<% out.print(rss.getString("reklam_y")); %>" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Reklam link -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="link">Reklam Linki</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="link" name="link" value="<% out.print(rss.getString("link")); %>" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- Durum -->
                                 <div class="form-group">
@@ -173,7 +215,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Buton -->
                                 <div class="form-group" >
                                     <div class="row">
@@ -181,18 +222,17 @@
                                         <div class="col-md-9 text-right">
                                             <input type="hidden" name="dID" value="<% out.print(rss.getString("id")); %>"/>
                                             <input type="submit" value="Kaydet" name="duzenle" class="btn btn-primary">
-                                            <a class="btn btn-danger" href="icerik.jsp">İptal</a>
+                                            <a class="btn btn-danger" href="reklam.jsp">İptal</a>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <%}%>
                         </div>
-
                         <div class="panel-footer"></div>
                     </div>
-
                 </section>
+
 
             </content>
         </div>

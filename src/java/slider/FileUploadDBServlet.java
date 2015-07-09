@@ -125,7 +125,7 @@ public class FileUploadDBServlet extends HttpServlet {
         input.close();
     }
 
-    private String escapeQuotes(String myString) {
+    public String escapeQuotes(String myString) {
         return myString.replaceAll(Pattern.quote("\\"), Matcher.quoteReplacement("\\\\"));
     }
 }

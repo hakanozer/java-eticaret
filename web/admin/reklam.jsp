@@ -157,7 +157,7 @@
                                                     <% out.print(rs.getString("bit_tarih"));%>
                                                 </td>
                                                 <td class="text-center">
-                                                    <% out.print(rs.getString("resim"));%>
+                                                    <a href="<% out.print(rs.getString("resim"));%>" target="_new">Görsel</a>
                                                 </td>
                                                 <td class="text-center">
                                                     <% out.print(rs.getString("reklam_x"));%>
@@ -166,7 +166,7 @@
                                                     <% out.print(rs.getString("reklam_y"));%>
                                                 </td>
                                                 <td class="text-center">
-                                                    <% out.print(rs.getString("link"));%>
+                                                    <a href="<% out.print(rs.getString("link"));%>" target="_new">Link</a>
                                                 </td>
                                                 <td class="text-center">
                                                     <% out.print(rs.getString("durum"));%>
