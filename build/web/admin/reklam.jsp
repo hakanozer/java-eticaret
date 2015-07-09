@@ -173,11 +173,29 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="reklamDuzenle.jsp?duzenleID=<% out.print(idLer.get(i)); %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                                    <a href="?silID=<% out.print(idLer.get(i)); %>" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i></a>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></button>
                                                     <!--//////////////listeleme bitti-->
                                                 </td>
-                                            </tr><%i++;
-                                                }%>
+                                                <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">İşlem Uyarısı!</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Silmek İstediğinize Emin Misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="?silID=<% out.print(idLer.get(i));%>" class="btn btn-success">Evet</a>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </tr><%i++;
+                                            }%>
                                         </tbody>
 
                                     </table>
