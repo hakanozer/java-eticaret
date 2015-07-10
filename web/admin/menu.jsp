@@ -59,6 +59,9 @@
                             <a href="icerik.jsp"><i class="fa fa-gift fa-fw"></i> İçerik Yönetimi</a>
                         </li>
                         <li>
+                            <a href="haberler.jsp"><i class="fa fa-newspaper-o fa-fw"></i> Haber Yönetimi</a>
+                        </li>
+                        <li>
                             <a href="reklam.jsp"><i class="fa fa-gift fa-fw"></i> Reklam Yönetimi</a>
                         </li>
                         <li>
