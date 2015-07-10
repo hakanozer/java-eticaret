@@ -82,24 +82,25 @@
                                         <div class="col-lg-12  col-md-12  col-sm-12  col-xs-12  ">
                                             <div class="bn-top">
                                                 <div class="row">
+                                                    <%
+                                                        ResultSet rs4 = db.baglan().executeQuery("select * from reklamlar order by id desc limit 2");
+                                                        while (rs4.next()) {
+                                                            //String imagereklam = null;
+                                                            String id = rs4.getString("id");
+                                                            String adi = rs4.getString("adi");
+                                                            String gosterim = rs4.getString("gosterim");
+                                                            String resim = rs4.getString("resim");
+                                                            String link = rs4.getString("link");
+                                                    %>
                                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                                        <div class="block-top" style="background-image: url('img/static_banner01.jpg');">
+                                                        <div class="block-top"  style="background-image: url('img/<%= resim%>');">
                                                             <div class="block-top-inner">
-                                                                <div class="title1">FASHION IN SUMMER 2015</div>
+                                                                <a href="<%=link%>"><div class="title1"><%= adi%></div></a>
                                                                 <div class="text1">Amazing Design for your Life !</div>
-                                                                <a class="btn-readmore" href="#">Shop now</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-                                                        <div class="block-top" style="background-image: url('img/static_banner02.jpg');">
-                                                            <div class="block-top-inner">
-                                                                <div class="title3">BIG SALE OFF UP TO</div>
-                                                                <div class="text3">30% OFF</div>
-                                                                <div class="title3">OF ALL PRODUCT</div>
+                                                                <a class="btn-readmore" href="<%=link%>">Satın Al</a></div>
                                                             </div>
-                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <%}%></div>
                                             </div>					</div>
                                     </div>
                                 </div>
