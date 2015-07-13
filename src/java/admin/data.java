@@ -9,7 +9,7 @@ public class data {
 
     private final String url = "jdbc:mysql://localhost/eticaret";
     private final String duName = "root";
-    private final String dPass = "root";
+    private final String dPass = "19863308";
     private final String Driver = "com.mysql.jdbc.Driver";
 
     Connection conn = null;
