@@ -135,6 +135,28 @@
                             <div class="owl-carousel collection-sidebar">
                                 <div class="category-products">
                                     <ul class="products-grid ">
+                                        
+                                        
+                                         <%                 //TOP SELLER
+                                                        
+                                                        
+                                                        
+                                                        ResultSet rsss4 = db.baglan().executeQuery("SELECT COUNT(se.urun_id) AS sayi, se.urun_id, se.fiyat, ur.baslik, res.adi from sepet as se  INNER JOIN urunler as ur ON se.urun_id = ur.id  INNER JOIN urun_resimleri as res on res.urun_id = ur.id GROUP BY se.urun_id ORDER BY sayi");
+                                                        while (rsss4.next()) {
+                                                           
+                                                            String resim = rsss4.getString("adi");
+                                                            String fiyat = rsss4.getString("fiyat");
+                                                            String baslik = rsss4.getString("baslik");
+                                                         
+                                                    %>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                         <li class="item">
                                             <a href="http://mt-quartz02.magentothemes.net/index.php/simple-product.html"
                                                title="Simple Product"
@@ -143,7 +165,7 @@
                                                     <img class="img-responsive lazyOwl front-img"
                                                          data-srcX2="img/frilly_tube_top_1_1.jpg"
                                                          data-src="img/frilly_tube_top_1_1.jpg"
-                                                         src="img/loader.gif"
+                                                         src="img/<%= resim%>"
                                                          alt="Simple Product"/>
                                                 </span>
                                                 <span class="product-img-additional back margin-image">
@@ -154,7 +176,7 @@
                                                 <h3 class="product-name">
                                                     <a href="http://mt-quartz02.magentothemes.net/index.php/simple-product.html"
                                                        title="Simple Product">
-                                                        Simple Product                    </a>
+                                                        <%= baslik%>                   </a>
                                                 </h3>
 
 
@@ -168,189 +190,38 @@
                                                     <a href="http://mt-quartz02.magentothemes.net/index.php/simple-product.html" class="minimal-price-link">
                                                         <span class="label">As low as:</span>
                                                         <span class="price" id="product-minimal-price-25">
-                                                            $530.00            </span>
+                                                            <%= fiyat%>          </span>
                                                     </a>
                                                 </div>
 
                                             </div>
                                             <div class="product-date" data-date="May 6, 2017"></div>
                                         </li>
-                                        <li class="item">
-                                            <a href="http://mt-quartz02.magentothemes.net/index.php/strip-blazer.html"
-                                               title="Strip Blazer"
-                                               class="product-image">
-                                                <span class="front margin-image">
-                                                    <img class="img-responsive lazyOwl front-img"
-                                                         data-srcX2="img/striped_blazer_with_piping_1__2.jpg"
-                                                         data-src="img/striped_blazer_with_piping_1__2.jpg"
-                                                         src="img/loader.gif"
-                                                         alt="Strip Blazer"/>
-                                                </span>
-                                                <span class="product-img-additional back margin-image">
-                                                    <img class="img-responsive alt-img lazy" data-src="img/jacquard_pattern_blazer_2.jpg" alt="Strip Blazer" />									</span>
-                                            </a>
-
-                                            <div class="top-actions-inner">
-                                                <h3 class="product-name">
-                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/strip-blazer.html"
-                                                       title="Strip Blazer">
-                                                        Strip Blazer                    </a>
-                                                </h3>
-
-
-
-                                                <div class="price-box">
-
-                                                    <p class="old-price">
-                                                        <span class="price-label">Regular Price:</span>
-                                                        <span class="price" id="old-price-1">
-                                                            $300.00                </span>
-                                                    </p>
-
-                                                    <p class="special-price">
-                                                        <span class="price-label">Special Price</span>
-                                                        <span class="price" id="product-price-1">
-                                                            $250.00                </span>
-                                                    </p>
-
-
-                                                </div>
-
-                                            </div>
-                                            <div class="product-date" data-date=""></div>
-                                        </li>
-                                        <li class="item">
-                                            <a href="http://mt-quartz02.magentothemes.net/index.php/brown-sungglasses.html"
-                                               title="Brown Sungglasses"
-                                               class="product-image">
-                                                <span class="front margin-image">
-                                                    <img class="img-responsive lazyOwl front-img"
-                                                         data-srcX2="img/brown_sunglasses_1.jpg"
-                                                         data-src="img/brown_sunglasses_1.jpg"
-                                                         src="img/loader.gif"
-                                                         alt="Brown Sungglasses"/>
-                                                </span>
-                                                <span class="product-img-additional back margin-image">
-                                                    <img class="img-responsive alt-img lazy" data-src="img/sunglasses_with_metal_frames_2.jpg" alt="Brown Sungglasses" />									</span>
-                                            </a>
-
-                                            <div class="top-actions-inner">
-                                                <h3 class="product-name">
-                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/brown-sungglasses.html"
-                                                       title="Brown Sungglasses">
-                                                        Brown Sungglasses                    </a>
-                                                </h3>
-
-
-
-                                                <div class="price-box">
-
-                                                    <p class="old-price">
-                                                        <span class="price-label">Regular Price:</span>
-                                                        <span class="price" id="old-price-2">
-                                                            $500.00                </span>
-                                                    </p>
-
-                                                    <p class="special-price">
-                                                        <span class="price-label">Special Price</span>
-                                                        <span class="price" id="product-price-2">
-                                                            $400.00                </span>
-                                                    </p>
-
-
-                                                </div>
-
-                                            </div>
-                                            <div class="product-date" data-date=""></div>
-                                        </li>
-                                        <li class="item">
-                                            <a href="http://mt-quartz02.magentothemes.net/index.php/partern-blazer.html"
-                                               title="Partern Blazer"
-                                               class="product-image">
-                                                <span class="front margin-image">
-                                                    <img class="img-responsive lazyOwl front-img"
-                                                         data-srcX2="img/jacquard_pattern_blazer_1.jpg"
-                                                         data-src="img/jacquard_pattern_blazer_1.jpg"
-                                                         src="img/loader.gif"
-                                                         alt="Partern Blazer"/>
-                                                </span>
-                                                <span class="product-img-additional back margin-image">
-                                                    <img class="img-responsive alt-img lazy" data-src="img/pique_blazer_2.jpg" alt="Partern Blazer" />									</span>
-                                            </a>
-
-                                            <div class="top-actions-inner">
-                                                <h3 class="product-name">
-                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/partern-blazer.html"
-                                                       title="Partern Blazer">
-                                                        Partern Blazer                    </a>
-                                                </h3>
-
-
-
-                                                <div class="price-box">
-
-                                                    <p class="old-price">
-                                                        <span class="price-label">Regular Price:</span>
-                                                        <span class="price" id="old-price-3">
-                                                            $800.00                </span>
-                                                    </p>
-
-                                                    <p class="special-price">
-                                                        <span class="price-label">Special Price</span>
-                                                        <span class="price" id="product-price-3">
-                                                            $600.00                </span>
-                                                    </p>
-
-
-                                                </div>
-
-                                            </div>
-                                            <div class="product-date" data-date="July 12, 2016"></div>
-                                        </li>
-                                        <li class="item">
-                                            <a href="http://mt-quartz02.magentothemes.net/index.php/leo-sungglasses.html"
-                                               title="Leo Sungglasses"
-                                               class="product-image">
-                                                <span class="front margin-image">
-                                                    <img class="img-responsive lazyOwl front-img"
-                                                         data-srcX2="img/leo_sunglasses_1_1.jpg"
-                                                         data-src="img/leo_sunglasses_1_1.jpg"
-                                                         src="img/loader.gif"
-                                                         alt="Leo Sungglasses"/>
-                                                </span>
-                                                <span class="product-img-additional back margin-image">
-                                                    <img class="img-responsive alt-img lazy" data-src="img/square_sunglasses_2_1.jpg" alt="Leo Sungglasses" />									</span>
-                                            </a>
-
-                                            <div class="top-actions-inner">
-                                                <h3 class="product-name">
-                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/leo-sungglasses.html"
-                                                       title="Leo Sungglasses">
-                                                        Leo Sungglasses                    </a>
-                                                </h3>
-
-
-
-                                                <div class="price-box">
-
-                                                    <p class="old-price">
-                                                        <span class="price-label">Regular Price:</span>
-                                                        <span class="price" id="old-price-4">
-                                                            $1,200.00                </span>
-                                                    </p>
-
-                                                    <p class="special-price">
-                                                        <span class="price-label">Special Price</span>
-                                                        <span class="price" id="product-price-4">
-                                                            $800.00                </span>
-                                                    </p>
-
-
-                                                </div>
-
-                                            </div>
-                                            <div class="product-date" data-date="May 11, 2017"></div>
-                                        </li>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                         <%}%>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                     </ul>
                                 </div>
                                 <div class="category-products">
