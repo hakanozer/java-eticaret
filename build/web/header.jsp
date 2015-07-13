@@ -657,11 +657,11 @@
                                                                             </div>
                                                                             <div class="mtmenu-block mtmenu-block-bottom grid-full std">
                                                                                 <div class="vertical-bottom">
-                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/intimates.html?___store=default"><span>See all Women's Fasion</span></a></span>
+                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/intimates.html?___store=default"><span>Tümünü Gör...</span></a></span>
 
-                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/tops-tees.html?___store=default"><span>See all Men's Fashion</span></a></span>
+                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/tops-tees.html?___store=default"><span>Tümünü Gör...</span></a></span>
 
-                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/hoodie-sweatshirts.html?___store=default"><span>See all Accessories</span></a></span>
+                                                                                    <span class="widget widget-category-link"><a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/hoodie-sweatshirts.html?___store=default"><span>Tümünü Gör...</span></a></span>
 
                                                                                 </div>
                                                                             </div>
