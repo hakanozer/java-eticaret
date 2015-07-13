@@ -9,7 +9,7 @@
 <%@include file="footer.jsp"%>
 <%
     data ns = new data();
-    ArrayList<String> idler = new ArrayList<String>();
+    
     ArrayList<String> ustidler = new ArrayList<String>();
     
     try {
@@ -28,8 +28,10 @@
     boolean silD = (request.getParameter("silID") == null);
     boolean eslemevarmı=false;
     if (!silD) {
+        
         String sil = request.getParameter("silID");
         for(int i=0;i<ustidler.size();i++){
+            
         if (sil.equals(ustidler.get(i))) {
             out.print("<script type='text/javascript'>\n");
             
@@ -38,12 +40,13 @@
             out.print("</script>");
             
             eslemevarmı=true;
+            break;
         }
         
         } 
         //for döngüsü dışına yazılmalı silme işlemi. Çünkü tamamını kontrol ettikten sonra silme işlemi yapılmalı
         //ilk kodumuzda ust id ile eşleşmediği an her halükarda silme işlemi yapıyordu.
-        if(eslemevarmı){
+        if(!eslemevarmı){
         //eslesme yoksa yani false ise silme işlemi yap
         int sil1 = ns.baglan().executeUpdate("delete from kategoriler where id = '" + sil + "' limit 1 ");
         }
@@ -129,8 +132,10 @@
 
 
                                         <%
+     ArrayList<String> idler = new ArrayList<String>();
+    
                                             int k = 0;
-                                            ResultSet rs1 = ns.baglan().executeQuery("select *from kategoriler");
+                                            ResultSet rs1 = ns.baglan().executeQuery("select *from kategoriler where ust_kat_id=0");
                                             while (rs1.next()) {
                                                 idler.add(rs1.getString("id"));
                                         %>
@@ -304,8 +309,10 @@
 
         <%      int i = 0;
             ResultSet rs = ns.baglan().executeQuery("select *from kategoriler");
+           
+            
             while (rs.next()) {
-                idler.add(rs.getString("id"));
+                
         %>
         <tr>
             <td class="tg-031e"><% out.print(rs.getString("id")); %></td>
@@ -315,14 +322,14 @@
                 <form  method="POST">
                     <input name="icerikId" type="hidden" value="24">
                     <input name="link" type="hidden" value="icerik">
-                    <a href="kategoriDuzenle.jsp?duzenleID=<% out.print(idler.get(i)); %>" class="btn btn-primary">Düzenle</a>
+                    <a href="kategoriDuzenle.jsp?duzenleID=<% out.print(rs.getString("id")); %>" class="btn btn-primary">Düzenle</a>
                 </form>
             </td>
             <td class="text-center">
                 <form  method="POST">
                     <input name="icerikId" type="hidden" value="24">
                     <input name="link" type="hidden" value="icerik" disabled>
-                    <a href="?silID=<% out.print(idler.get(i));%>" class="btn btn-danger">Sil</a>
+                    <a href="?silID=<% out.print(rs.getString("id")); %>" class="btn btn-danger">Sil</a>
                 </form>
             </td>
         </tr>

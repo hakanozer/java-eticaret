@@ -55,7 +55,7 @@
         <script type="text/javascript" src="js/menu.js"></script>
         <script type="text/javascript" src="js/translate.js"></script>
         <script type="text/javascript" src="js/cookies.js"></script>
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="js/compatibility.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-tooltip.js"></script>
@@ -140,7 +140,7 @@
                                                                     </td>
                                                                     <td class="a-center">
                                                                         <a href="#" title="Edit item parameters" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                                                        
+
                                                                     </td>
 
 
@@ -198,7 +198,7 @@
                                                                     </div>
                                                                     <div class="sidebar">
                                                                         <ul id="mt_accordionmenu" class="nav-accordion nav-mobile-accordion">
-                                                                            <li><a href="http://mt-quartz02.magentothemes.net/index.php/">Home</a></li>
+                                                                            <li><a href="index.jsp">ANASAYFA</a></li>
                                                                             <li class="level0 nav-1 level-top first">
                                                                                 <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion.html" class="level-top">
 
@@ -406,7 +406,7 @@
                                                                                             <div class="top-bar">
                                                                                                 <!-- <div class="welcome-msg">Default welcome msg! </div> -->
                                                                                                 <div class="login-topbar">
-                                                                                                    <a href="http://mt-quartz02.magentothemes.net/index.php/customer/account/login/"><i aria-hidden="true" class="icon_lock_alt"></i><span class="hidden-sm">Giriş</span></a>
+                                                                                                    <a href="accountLogin.jsp"><i aria-hidden="true" class="icon_lock_alt"></i><span class="hidden-sm">Giriş</span></a>
                                                                                                 </div>
 
                                                                                                 <div class="checkout-topbar">
@@ -429,8 +429,8 @@
                                                                                             <div class="header-act row">
                                                                                                 <div class="header-content-left col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                                     <div class="logo-home">
-                                                                                                        <h2 class="logo"><strong>MTQuartz02</strong><a href="http://mt-quartz02.magentothemes.net/index.php/" title="MTQuartz02">
-                                                                                                                <img class="img-responsive" src="img/logo_2.png" alt="MTQuartz02" /></a>
+                                                                                                        <h2 class="logo"><strong>Java | E-commerce</strong><a href="index.jsp" title="Java | E-commerce">
+                                                                                                                <img class="img-responsive" src="img/logo_2.png" alt="Java | E-commerce" /></a>
                                                                                                         </h2>
                                                                                                     </div>
                                                                                                 </div>
@@ -540,24 +540,25 @@
                                                                                                 <div class="header-search-right col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                                     <div class="top-seach clearfix">
                                                                                                         <div class="quick-access">
-                                                                                                            <form id="search_mini_form" action="http://mt-quartz02.magentothemes.net/index.php/catalogsearch/result/" method="get">
+                                                                                                            <form id="search_mini_form" action="Search.jsp" method="get">
                                                                                                                 <div class="form-search mini-search">
                                                                                                                     <div class="box-search-select">
-                                                                                                                        <div class="search-dropdown">
-                                                                                                                            <span class="search-select">All categories</span>
+                                                                                                                        <div class="search-dropdown" >
+                                                                                                                            <span class="search-select">Tüm Kategoriler</span>
                                                                                                                             <ul class="search-option-list">
-                                                                                                                                <li class="selected"><span>All categories</span>
-                                                                                                                                    <li value="3" ><span>Women's Fashion</span></li>
-                                                                                                                                    <li value="22" ><span>Men's Fashion</span></li>
-                                                                                                                                    <li value="23" ><span>Jewelry & Watches</span></li>
-                                                                                                                                    <li value="24" ><span>Shoes</span></li>
-                                                                                                                                    <li value="30" ><span>Glasses</span></li>
-                                                                                                                                    <li value="31" ><span>Bags</span></li>
-                                                                                                                                    <li value="32" ><span>Kids Fashion</span></li>
-                                                                                                                                    <li value="33" ><span>Accessories</span></li>
+
+                                                                                                                                <% ResultSet rk = d.baglan().executeQuery("SELECT *FROM kategoriler WHERE ust_kat_id = 0"); %>
+                                                                                                                                <li class="selected"><span>Tüm Kategoriler</span>
+                                                                                                                                    <%while (rk.next()) {%>
+                                                                                                                                    <li value="<% out.print(rk.getInt("id")); %>" ><span><% out.print(rk.getString("adi"));  %></span></li>
+
+                                                                                                                                    <%
+                                                                                                                                    
+}%>
                                                                                                                             </ul>
                                                                                                                         </div>
-                                                                                                                        <input type="hidden" name="cat" id="cat-search" value="" />
+                                                                                                                        <input type="hidden" name="cat" id="cat-search" value="0" />
+                                                                                                                       
                                                                                                                         <input id="search" type="text" class="input-text" name="q" value="" autocomplete="off"/>
                                                                                                                         <div id="search_autocomplete" class="search-autocomplete"></div>
                                                                                                                     </div>
@@ -604,7 +605,7 @@
                                                                                                 <div class="mt-main-menu">
                                                                                                     <ul id="mtnav" class="megamenu">
                                                                                                         <li class="level0 home level-top  active m-dropdown parent">
-                                                                                                            <a href="index.jsp" class="level-top"><span>Home</span></a>
+                                                                                                            <a href="index.jsp" class="level-top"><span>ANASAYFA</span></a>
                                                                                                         </li> 
                                                                                                         <%
 
@@ -804,7 +805,7 @@
                                                                                                                             </div>
                                                                                                                         </li>
                                                                                                                         <%j++;
-                                                                                                                            }%> 
+                                                                                                                                                                                            }%> 
                                                                                                                     </ul>
                                                                                                                 </div>
 
