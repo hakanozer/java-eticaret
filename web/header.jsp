@@ -123,7 +123,6 @@
                                                                 <tr class="first last">
                                                                     <th rowspan="1">Ürün Resmi</th>
                                                                     <th rowspan="1"><span class="nobr">Ürün Adı</span></th>
-                                                                    <th rowspan="1">Düzenle</th>
                                                                     <th class="a-center" colspan="1"><span class="nobr">Fiyat</span></th>
                                                                     <th rowspan="1" class="a-center">Adet</th>
                                                                     <th class="a-center" colspan="1">Toplam Fiyat</th>
@@ -138,12 +137,6 @@
                                                                             <a href="http://mt-quartz02.magentothemes.net/index.php/simple-product.html">Simple Product</a>
                                                                         </h2>
                                                                     </td>
-                                                                    <td class="a-center">
-                                                                        <a href="#" title="Edit item parameters" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-
-                                                                    </td>
-
-
                                                                     <td class="a-right">
                                                                         <span class="cart-price">
                                                                             <span class="price">$566.00</span>                
@@ -558,7 +551,7 @@
                                                                                                                             </ul>
                                                                                                                         </div>
                                                                                                                         <input type="hidden" name="cat" id="cat-search" value="0" />
-                                                                                                                       
+
                                                                                                                         <input id="search" type="text" class="input-text" name="q" value="" autocomplete="off"/>
                                                                                                                         <div id="search_autocomplete" class="search-autocomplete"></div>
                                                                                                                     </div>

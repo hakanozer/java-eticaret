@@ -127,6 +127,7 @@
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" >Genişlik</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" >Yükseklik</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" >Link</th>
+                                                <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" >Açıklama</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" >Durum</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="duyurular" rowspan="1" colspan="1" >İşlemler</th>
                                             </tr>
@@ -167,6 +168,9 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="<% out.print(rs.getString("link"));%>" target="_new">Link</a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <% out.print(rs.getString("aciklama"));%>
                                                 </td>
                                                 <td class="text-center">
                                                     <% out.print(rs.getString("durum"));%>
