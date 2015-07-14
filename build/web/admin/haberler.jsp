@@ -47,10 +47,9 @@
                     <section>
                         <form action="">
 
-                            <div class="row">
+                            
                                 <div class="col-md-5" style="padding-bottom: 15px">
                                     <a href="haber_ekle.jsp" class="btn btn-primary">Haber Ekle</a>
-                                    <!--  <a href="kategori.jsp" class="btn btn-primary">Kategori Ekle</a>  -->
                                 </div>
 
 
@@ -78,18 +77,12 @@
                                         %>
                                     </select>
                                 </div>
-                                <!--
-                                    <div class="form-group col-md-4">
-                                    <select name="kategori_id" class="form-control" id="">
-                                        <option value="0">-- Bütün Kategoriler</option>
-                                    </select>
-                                </div>
-                                -->
-                                <div class="form-group col-md-1">
+                                
+                                <div class="col-md-2">
                                     <input class="btn btn-primary" type="submit" name="yolla" value="SEÇ">
                                 </div>
 
-                            </div>
+                            
                         </form>
                         <hr>
 
@@ -123,11 +116,9 @@
                                     <table class="table display table-hover table-condensed table-responsive dataTable no-footer" id="haberler" role="grid" aria-describedby="haberler_info">
                                         <thead>
                                             <tr role="row">
-                                                <th class="text-center sorting_asc" tabindex="0" aria-controls="haberler" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Haberler: activate to sort column descending" style="width: 95px;">Haberler</th>                                                
                                                 <th class="text-center sorting" tabindex="0" aria-controls="haberler" rowspan="1" colspan="1" aria-label="Aktif/Pasif: activate to sort column ascending" style="width: 91px;">Aktif/Pasif</th>
-                                                <th class="text-center sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=" Resim : activate to sort column descending" style="width: 100px;" aria-sort="ascending"> Resim </th>
+                                                <th class="text-center sorting_asc" tabindex="0" aria-controls="haberler" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Haberler: activate to sort column descending" style="width: 95px;">Haberler</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="haberler" rowspan="1" colspan="1" aria-label="Eklenme Tarihi: activate to sort column ascending" style="width: 192px;">Eklenme Tarihi</th>
-                                                <th class="text-center sorting" tabindex="0" aria-controls="haberler" rowspan="1" colspan="1" aria-label="Resim: activate to sort column ascending" style="width: 66px;">Resim</th>
                                                 <th class="text-center sorting" tabindex="0" aria-controls="haberler" rowspan="1" colspan="1" aria-label="İşlem: activate to sort column ascending" style="width: 177px;">İşlem</th>
                                             </tr>
                                         </thead>
@@ -141,24 +132,14 @@
 
                                             %>
 
-
-                                        <td class="text-center">
-                                            <% out.print(rs.getString("baslik"));%>
-                                        </td>
                                         <td class="text-center">
                                             <% out.print(rs.getString("durum"));%>
                                         </td>
                                         <td class="text-center">
-                                            <% out.print(rs.getString("resim_id"));
-                                            %>
+                                            <% out.print(rs.getString("baslik"));%>
                                         </td>
                                         <td class="text-center">
                                             <% out.print(rs.getString("tarih"));%>
-                                        </td>
-                                        <td class="text-center">
-                                            <form action="haber_resim_ekle.jsp?resim_id=<% out.print(idLer.get(i)); %>" method="post">
-                                                <input class="btn btn-info" type="submit" value="Resim">
-                                            </form>
                                         </td>
                                         <td class="text-center">
                                             <form action="sirket/inc/icerik.php" method="POST">

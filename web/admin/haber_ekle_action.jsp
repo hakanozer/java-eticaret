@@ -1,6 +1,7 @@
 
 <%@page import="admin.data"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <%
         request.setCharacterEncoding("UTF-8");
@@ -16,13 +17,11 @@
           String durum = request.getParameter("durum");
           String baslik = request.getParameter("baslik");
           String detay = request.getParameter("detay");
-          //String kategori_id = request.getParameter("kategori_id");
-          String resim_id = request.getParameter("resim_id");
           
           
           try {
               
-           int rss = ns.baglan().executeUpdate("insert into haberler values (null, '"+durum+"', '"+baslik+"', '"+detay+"', null, now())");
+           int rss = ns.baglan().executeUpdate("insert into haberler values (null, '"+durum+"','"+baslik+"', '"+detay+"', now())");
           if(rss>0){
               response.sendRedirect("haberler.jsp");
              System.err.println("Ekleme Hatası : Ekleme Başarılı");

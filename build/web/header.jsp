@@ -303,15 +303,13 @@
 
 
                                                 <marquee behavior="scroll" direction="left"><p class="break-new">
-                                                        <%                                                            int i = 0;
-                                                            ResultSet rs = d.baglan().executeQuery("select *from duyurular WHERE durum_id = '1'");
-                                                            while (rs.next()) {
-
-
-                                                        %>
-                                                        <span><a href="duyuruDetay.jsp?IDd=<% out.print(rs.getString("duyuru_id"));  %>"><% out.print(rs.getString("duyuru_baslik"));%></a>
-                                                        </span> 
-                                                        <%i++;
+                                                    <%                                                            
+                                                    int i = 0;
+                                                    ResultSet rs = d.baglan().executeQuery("select *from haberler WHERE durum = '1'");
+                                                    while (rs.next()) {
+                                                    %>
+                                                    <span><a href="haberDetay.jsp?IDd=<% out.print(rs.getString("id"));  %>"><% out.print(rs.getString("baslik"));%></a></span> 
+                                                    <%i++;
                                                             }%>
                                                 </marquee>
 
@@ -571,88 +569,88 @@
                                                                             <a href="http://mt-quartz02.magentothemes.net/index.php/" class="level-top"><span>Home</span></a>
                                                                     </li> 
                                                                     -->
-                                                                    
-                                                            <%
-                                                                int ust_i = 0;
-                                                                int alt_i = 0;
-                                                                List<String> ust_kat_id = new ArrayList<String>();
-                                                                List<String> alt_kat_id = new ArrayList<String>();
-                                                                
-                                                                List<String> ust_kat_adi = new ArrayList<String>();
-                                                                List<String> alt_kat_adi = new ArrayList<String>();
-                                                                
-                                                                List<String> alt_kat_ust_id = new ArrayList<String>();
-                                                                
-                                                                ResultSet ts = d.baglan().executeQuery("select *from kategoriler");
-                                                                
-                                                                
-                                                                while (ts.next()) {
-                                                                    if(ts.getString("ust_kat_id").equals("0")) {
-                                                                        ust_kat_id.add(ts.getString("id"));
-                                                                        ust_kat_adi.add(ts.getString("adi"));
-                                                                    }else {
-                                                                        alt_kat_id.add(ts.getString("id"));
-                                                                        alt_kat_adi.add(ts.getString("adi"));
-                                                                        alt_kat_ust_id.add(ts.getString("ust_kat_id"));
-                                                                    }
-                                                                }     
-                                                            %>
-                                                            
-                                                            
-                                                            <%
-                                                                
-                                                               for (String ust_kat_id1 : ust_kat_id) {
-                                                                
-                                                            %>
-                                                            
+
+                                                                    <%
+                                                                        int ust_i = 0;
+                                                                        int alt_i = 0;
+                                                                        List<String> ust_kat_id = new ArrayList<String>();
+                                                                        List<String> alt_kat_id = new ArrayList<String>();
+
+                                                                        List<String> ust_kat_adi = new ArrayList<String>();
+                                                                        List<String> alt_kat_adi = new ArrayList<String>();
+
+                                                                        List<String> alt_kat_ust_id = new ArrayList<String>();
+
+                                                                        ResultSet ts = d.baglan().executeQuery("select *from kategoriler");
+
+                                                                        while (ts.next()) {
+                                                                            if (ts.getString("ust_kat_id").equals("0")) {
+                                                                                ust_kat_id.add(ts.getString("id"));
+                                                                                ust_kat_adi.add(ts.getString("adi"));
+                                                                            } else {
+                                                                                alt_kat_id.add(ts.getString("id"));
+                                                                                alt_kat_adi.add(ts.getString("adi"));
+                                                                                alt_kat_ust_id.add(ts.getString("ust_kat_id"));
+                                                                            }
+                                                                        }
+                                                                    %>
+
+
+                                                                    <%
+                                                                        for (String ust_kat_id1 : ust_kat_id) {
+
+                                                                    %>
+
                                                                     <li class="level0 nav-1 level-top first mega_align_left parent show-direct">
                                                                         <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion.html" class="level-top">
 
                                                                             <span><% out.print(ust_kat_adi.get(ust_i)); %></span>
                                                                         </a>
                                                                         <div class="level0 sub-wrapper shown-sub" data-width="" style="display: none; height: 521px; position: absolute; left: 270px; top: 67px; width: 450px; opacity: 1; overflow: inherit;">
-                                                                            
+
                                                                             <div class="mtmenu-block mtmenu-block-center menu-items grid12-12 itemgrid itemgrid-4col">
                                                                                 <ul class="level0">
-                                                                                    
-                                                                                    
+
+
                                                                                     <%
-                                                                                        
+
                                                                                         for (String alt_kat_ust_id1 : alt_kat_ust_id) {
-                                                                                            
-                                                                                        if(ust_kat_id1.equals(alt_kat_ust_id1)){    
-                                                                                        
+
+                                                                                            if (ust_kat_id1.equals(alt_kat_ust_id1)) {
+
                                                                                     %>
-                                                                                    
-                                                                                    
+
+
                                                                                     <li class="level1 groups item nav-1-1 first">
                                                                                         <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion.html">
 
                                                                                             <span class="title_group">Öneriler</span>
                                                                                         </a>
                                                                                         <div class="groups-wrapper">
-                                                                                            
+
                                                                                             <ul class="level1">
                                                                                                 <li class="level2 nav-1-1-1 first">
                                                                                                     <a href="http://mt-quartz02.magentothemes.net/index.php/women-s-fashion/suggestion/dreese.html">
 
-                                                                                                        <span><% out.print(alt_kat_adi.get(alt_i)); alt_i++;%></span>
+                                                                                                        <span><% out.print(alt_kat_adi.get(alt_i));
+                                                                                                            alt_i++;%></span>
                                                                                                     </a>
                                                                                                 </li>
-                                                                                                
+
                                                                                             </ul>
-                                                                                                    
+
                                                                                         </div>
-                                                                                                    
+
                                                                                     </li>
-                                                                                    
-                                                                                    <% }} %>
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                           
+
+                                                                                    <% }
+                                                                                        } %>
+
+
+
+
+
+
                                                                                 </ul>
                                                                             </div>
                                                                             <div class="mtmenu-block mtmenu-block-bottom grid-full std">
@@ -667,14 +665,15 @@
                                                                             </div>
                                                                         </div>
                                                                     </li>
-                                                                
-                                                                                            
-                                                                   <% ust_i++; }  %>                         
-                                                                                            
-                                                                                            
+
+
+                                                                    <% ust_i++;
+                                                                        }%>                         
+
+
                                                                 </ul>
                                                             </div>
-                                                                                                                  
+
                                                             <script type="text/javascript">
                                                                 $mt(function () {
                                                                     $mt(".megamenu-vertical").vmegamenu({
