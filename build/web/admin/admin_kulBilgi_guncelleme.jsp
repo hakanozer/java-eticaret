@@ -1,11 +1,46 @@
     <%@page import="java.util.Enumeration"%>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@include file="menu.jsp"%>
-
-    
-      <%@page import="admin.data"%>
-      <%@page import="java.sql.ResultSet"%>
+    <%@page import="admin.data"%>
+    <%@page import="java.sql.ResultSet"%>
      
+          
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet"/>
+        <link href="dist/css/timeline.css" rel="stylesheet"/>
+        <link href="dist/css/sb-admin-2.css" rel="stylesheet"/>
+        <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                         <div class="input-group custom-search-form">
+                                <span class="input-group-btn">
+                                </span>
+                            </div>
+                            </div>
+                </div>
+            </div>
+    </body>
+    
       
       <%
     request.setCharacterEncoding("UTF-8");
@@ -19,6 +54,7 @@
     boolean kulDuzenle = (request.getParameter("kulDuzenle") == null);
     if(!kulDuzenle) {
         
+        boolean sesssID = (session.getAttribute("adminId") == null);
      
         gid = request.getParameter("fId");
         adi = request.getParameter("adi");
@@ -26,9 +62,13 @@
         kuladi = request.getParameter("kuladi");
         mail = request.getParameter("mail");
         
+        if(!sesssID){
+                            
+        String giddd = admin.AdminBean.decode(session.getAttribute("adminId").toString());
+        
         try {
             
-            int yazDurum = ns.baglan().executeUpdate("update kullanicilar set adi = '"+adi+"', soyadi = '"+soyadi+"', kuladi = '"+kuladi+"', mail = '"+mail+"'  where id = '"+gid+"' limit 1");
+            int yazDurum = ns.baglan().executeUpdate("update kullanicilar set adi = '"+adi+"', soyadi = '"+soyadi+"', kuladi = '"+kuladi+"', mail = '"+mail+"'  where id = '"+giddd+"' limit 1");
              
             if(yazDurum > 0) {
                 
@@ -38,8 +78,10 @@
             System.err.println("Düzenleme Hatası :" + ex);
         }
         
-    }
-
+    }else {
+            response.sendRedirect("index.jsp");
+        } 
+}
 %>
 
  <%
@@ -94,7 +136,7 @@
                                         <label for="fAdi">Adınız:</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="adi" id="adi" value="<% out.print(adid); %>">
+                                        <input class="form-control" type="text" name="adi" id="adi" value="<%out.print(adid); %>">
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +147,7 @@
                                         <label for="fSoyadi">Soyadınız:</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="soyadi" id="soyadi" value="<% out.print(soyadid); %>">
+                                        <input class="form-control" type="text" name="soyadi" id="soyadi" value="<%out.print(soyadid); %>">
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +158,7 @@
                                         <label for="fKulAdi">Kullanıcı Adınız</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="kuladi" id="kuladi" value="<% out.print(kuladid); %>">
+                                        <input class="form-control" type="text" name="kuladi" id="kuladi" value="<%out.print(kuladid); %>">
                                     </div>
                                 </div>
                             </div>

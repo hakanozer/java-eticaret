@@ -2,7 +2,44 @@
 <%@page import="admin.data"%>
 <%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <%@include file="menu.jsp"%>
+
+    
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet"/>
+        <link href="dist/css/timeline.css" rel="stylesheet"/>
+        <link href="dist/css/sb-admin-2.css" rel="stylesheet"/>
+        <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                         <div class="input-group custom-search-form">
+                                <span class="input-group-btn">
+                                </span>
+                            </div>
+                            </div>
+                </div>
+            </div>
+    </body>
 
 
     
@@ -19,17 +56,21 @@
     
     boolean kulDuzenle = (request.getParameter("fKulduzenle") == null);
     if(!kulDuzenle) {
+        
+        boolean updateID = (session.getAttribute("adminId") == null);
        
         gid = request.getParameter("fID");
         sirket_adi = request.getParameter("sirket_adi");
-        adres = request.getParameter("adres");
+        adres = request.getParameter("fAdres");
         telefon = request.getParameter("fTel");
         
-         
+         if(!updateID){
+                            
+        String sid = admin.AdminBean.decode(session.getAttribute("adminId").toString());
         
         try {
             
-            int yazDurum = ns.baglan().executeUpdate("update sirket_bilgileri set sirket_adi = '"+sirket_adi+"', adres= '"+adres+"', telefon = '"+telefon+"' where id = '"+gid+"' limit 1");
+            int yazDurum = ns.baglan().executeUpdate("update sirket_bilgileri set sirket_adi = '"+sirket_adi+"', adres= '"+adres+"', telefon = '"+telefon+"' where id = '"+sid+"' limit 1");
           
             if(yazDurum > 0) {
                 
@@ -40,7 +81,7 @@
         }
         
     }
-
+}
 %>
 
  <%
@@ -81,7 +122,7 @@
                 <div class="panel-body">
 
                     <form action="" method="post">
-                        <input name="fID" type="hidden" value=" <% out.print(gid); %>"/>
+                        <input name="fID" type="hidden" value="<%out.print(gid); %>"/>
 
                         <!-- şirket adı -->
                         <div class="form-group">
@@ -92,7 +133,7 @@
                                     </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" name="sirket_adi" id="sirket_adi" value=" <% out.print(sirketadid); %>"/>
+                                    <input class="form-control" type="text" name="sirket_adi" id="sirket_adi" value=" <%out.print(sirketadid); %>"/>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +147,7 @@
                                     </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" name="fAdres" id="adres" value=" <% out.print(adresd); %>"/>
+                                    <input class="form-control" type="text" name="fAdres" id="adres" value=" <%out.print(adresd); %>"/>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +159,7 @@
                                     <label for="fTel">Telefon: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="text" name="fTel" id="fTel" value="<% out.print(telefond); %>"/>
+                                    <input class="form-control" type="text" name="fTel" id="fTel" value="<%out.print(telefond); %>"/>
                                 </div>
                             </div>
                         </div>
