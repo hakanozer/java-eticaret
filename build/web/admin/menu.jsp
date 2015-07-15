@@ -68,6 +68,9 @@
                             <a href="kullanici.jsp"><i class="fa fa-user fa-fw"></i> Kullanıcı Yönetimi</a>
                         </li>
                         <li>
+                            <a href="sliderlistele.jsp"><i class="fa fa-gift fa-fw"></i> Slider Yönetimi</a>
+                        </li>
+                        <li>
                             <a href="admin.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>

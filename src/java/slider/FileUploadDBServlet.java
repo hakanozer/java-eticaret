@@ -22,9 +22,7 @@ import javax.servlet.http.Part;
 @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
 public class FileUploadDBServlet extends HttpServlet {
 
-    public static String path = "\\\\192.168.39.111\\Users\\java-1\\Documents\\NetBeansProjects\\proje\\java-eticaret\\web\\img\\";
-
-    private String photoWidth = null, photoHeight = null;
+    public static String path = "\\\\192.168.39.111\\Users\\java-1\\Documents\\NetBeansProjects\\proje\\web\\img\\";
 
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +34,6 @@ public class FileUploadDBServlet extends HttpServlet {
         String baslik = request.getParameter("baslik");
         String aciklama = request.getParameter("aciklama");
 
-        photoHeight = request.getParameter("photoHeight");
-        photoWidth = request.getParameter("photoWidth");
         InputStream inputStream = null; // input stream of the upload file
 
         // obtains the upload file part in this multipart request
@@ -119,7 +115,6 @@ public class FileUploadDBServlet extends HttpServlet {
 
         while (input.read(buffer) > 0) {
             fout.write(buffer);
-            System.out.print("alıyom ");
         }
         fout.close();
         input.close();
